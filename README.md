@@ -39,7 +39,7 @@ This also contains a [Sapper](https://sapper.svelte.dev/) app that hosts a built
   $ runner build
   ```
 
-5. The build process will bundle your chart module for others to install from GitHub. It will also create a GitHub docs page to preview your chart, which you can publish by updating the GitHub Pages settings on your repo in GitHub (use the `docs/` folder on the `master` branch).
+6. The build process will bundle your chart module for others to install from GitHub. It will also create a GitHub docs page to preview your chart, which you can publish by updating the GitHub Pages settings on your repo in GitHub (use the `docs/` folder on the `master` branch).
 
 
 ## Developing chart modules
