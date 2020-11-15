@@ -93,15 +93,21 @@ class ChartComponent {
   }
 
   /**
-   * If you need to add ADDITIONAL data to your chart, you absolutely can add it!
-   * Here's an example you can uncomment and customize for what you need.
+   * If you need to add ADDITIONAL data for your chart, you can absolutely add
+   * additional getter/setters! Below is an example you can uncomment and customize.
    *
    * In your chart's draw method you'd be able to access this data like this:
    * const geoData = this.geoData();
+   * ... and the user will be able to set it like this:
+   * chart.geoData([ ... ]);
    */
   // geoData(topojson) {
+  //   // GETTER
   //   if (!topojson) return this._topojson;
+  //
   //   // Validate your data here, maybe...
+  //
+  //   // SETTER
   //   this._topojson = topojson;
   //   return this;
   // }

@@ -12,7 +12,7 @@ Follow the notes below! -->
   // 💪 Create a new chart instance of your module.
   let chart = new MyChartModule();
   
-  // 🎚️ Create variables for any data or props or you want users to be able
+  // 🎚️ Create variables for any data or props you want users to be able
   // to update in the demo. (And write buttons to update them below!)
   let chartData = [60, 40, 60]
   let circleFill = 'steelblue';
