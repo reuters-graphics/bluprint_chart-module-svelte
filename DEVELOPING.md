@@ -32,7 +32,18 @@ The rest of this doc is a guide to building reusable charts with the chart modul
 
 The template is made to be extremely flexible to cover all kinds of charts. BUT there are a few guidelines your chart module should follow to make it easier to use and adapt. 
 
-1. **Chart modules should be JavaScript classes** so they are portable and so that a single module can create multiple charts.
-2. **Chart modules should be customizable** by passing data and props to them so they can be adapted to multiple use cases.
-3. **Chart modules should have a single, idempotent draw function** that creates the chart (more on "idempotent" later!) so that they are predictable and work the same way no matter in what context they're called.
-4. **Chart modules should respond to the dimensions of their containers**, at least the width, so they will work on any device or in any design layout.
+1. **Chart modules should be JavaScript classes**
+
+    ... so they are portable and can create multiple charts.
+
+2. **Chart modules should be configurable and reconfigurable** by passing data and props to them.
+
+    ... so they can be customized to work with many datasets and multiple designs.
+
+3. **Chart modules should have a single, idempotent draw function** that creates the chart.
+
+    ... so that they are predictable and work the same way no matter in what context they're called. (More on "idempotent" later!)
+
+4. **Chart modules should respond to the dimensions of their containers**, at least the width.
+
+    ... so they will work on any device or in any design layout.
