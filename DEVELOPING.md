@@ -62,15 +62,15 @@ const newChart = new MyChart();
 
 // ... pass that chart some configuration:
 newChart
-  .selection('#chart') // ... the element the chart should be drawn into
-  .data([ /* ... */ ]) // ... the data for the chart
-  .props({ /* ... */ }) // ... and any other visual properties we want to customize
+  .selection('#chart') // + the element the chart should be drawn into
+  .data([ /* ... */ ]) // + the data for the chart
+  .props({ /* ... */ }) // + any other visual properties we want to customize
 
-// And finally, draw that chart with the data and config we've given it.
+// Now draw that chart with the data and config we've given it.
 newChart.draw();
 ```
 
-You can write your chart module class any way you want, but as a shortcut we start you off by extending a base class that's included in the template:
+You can write your chart module class any way you want, but as a shortcut, we start you off by extending a base class that's included in the template:
 
 ```javascript
 import BaseChartComponent from './baseClasses/ChartComponent';
@@ -82,4 +82,4 @@ class MyChartModule extends BaseChartComponent {
 export default MyChartModule;
 ```
 
-You can look at what's in the base class, but you don't have to if you pick up how to use the basics.
+The base class includes some basic getter/setter functions and some useful error messages if the _wrong_ data or props are passed to it. You can look at what's in the base class and customize those getter/setters and validations rules, but you don't have to.
