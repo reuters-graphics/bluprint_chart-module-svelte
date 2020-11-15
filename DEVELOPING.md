@@ -2,6 +2,8 @@
 
 # Developing chart modules
 
+- [Using the dev server](#using-the-dev-server)
+
 ### Using the dev server
 
 Start the development server to begin working on your chart module.
