@@ -1,10 +1,10 @@
 ![](./badge.svg)
 
-# bluprint_chart-modile-svelte
+# bluprint_chart-module-svelte
 
 This bluprint contains a framework for writing reusable chart modules, which are dataviz tools that can easily be used across different contexts and frameworks.
 
-This also contains a [Sapper](https://sapper.svelte.dev/) app to create an interactive demo of your chart in [Svelte](https://svelte.dev/).
+This also contains a [Sapper](https://sapper.svelte.dev/) app that hosts a built-in interactive demo of your chart you can customize in [Svelte](https://svelte.dev/).
 
 ## Quickstart
 
