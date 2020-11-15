@@ -5,6 +5,7 @@
 - [Quickstart](#quickstart)
 - [Building Reuters chart modules](#building-reuters-chart-modules)
   - [Chart module design style](#%EF%B8%8F-chart-module-design-style)
+  - [Working with chart module classes](#%EF%B8%8F-working-with-chart-module-classes)
 
 ## Quickstart
 
@@ -32,18 +33,53 @@ The rest of this doc is a guide to building reusable charts with the chart modul
 
 The template is made to be extremely flexible to cover all kinds of charts. BUT there are a few guidelines your chart module should follow to make it easier to use and adapt. 
 
-⭐ **Chart modules should be JavaScript classes.**
+1. **Chart modules should be JavaScript classes.**
 
-  ... so they are portable and can create multiple charts.
+    ... so they are portable and can create multiple charts.
 
-⭐ **Chart modules should be configurable and reconfigurable** by passing data and props to them.
+2. **Chart modules should be configurable and reconfigurable** by passing data and props to them.
 
-  ... so they can be customized to work with many datasets and multiple designs.
+    ... so they can be customized to work with many datasets and multiple designs.
 
-⭐ **Chart modules should have a single, idempotent draw function** that creates the chart.
+3. **Chart modules should have a single, idempotent draw function** that creates the chart.
 
-  ... so that they are predictable and work the same way no matter in what context they're called. (More on "idempotent" later!)
+    ... so that they are predictable and work the same way no matter in what context they're called. (More on "idempotent" later!)
 
-⭐ **Chart modules should respond to the dimensions of their containers**, at least the width.
+4. **Chart modules should respond to the dimensions of their containers**, at least the width.
 
-  ... so they will work on any device or in any design layout.
+    ... so they will work on any device or in any design layout.
+
+
+### ✏️ Working with chart module classes
+
+Chart modules are written as JavaScript classes. That let's us create an instance of that class and customize it with different data or properties for every chart we want to make (great for small multiples!).
+
+First, let's look at how we want to _use_ our chart modules:
+
+```javascript
+// Create a new instance of our chart
+const newChart = new MyChart();
+
+// ... pass that chart some configuration:
+newChart
+  .selection('#chart') // ... the element the chart should be drawn into
+  .data([ /* ... */ ]) // ... the data for the chart
+  .props({ /* ... */ }) // ... and any other visual properties we want to customize
+
+// And finally, draw that chart with the data and config we've given it.
+newChart.draw();
+```
+
+You can write your chart module class any way you want, but as a shortcut we start you off by extending a base class that's included in the template:
+
+```javascript
+import BaseChartComponent from './baseClasses/ChartComponent';
+
+class MyChartModule extends BaseChartComponent {
+  // your chart stuff ...
+}
+
+export default MyChartModule;
+```
+
+You can look at what's in the base class, but you don't have to if you pick up how to use the basics.
