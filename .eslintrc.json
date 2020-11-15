@@ -1,0 +1,13 @@
+{
+  "root": true,
+  "extends": "@reuters-graphics/eslint-config",
+  "plugins": [
+    "svelte3"
+  ],
+  "overrides": [
+    {
+      "files": ["*.svelte"],
+      "processor": "svelte3/svelte3"
+    }
+  ]
+}
