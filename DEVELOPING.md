@@ -28,11 +28,11 @@ The build process will bundle your chart module so others can install it from Gi
 
 The rest of this doc is a guide to building reusable charts with the chart module pattern included in this template.
 
-### Chart module design style
+### ✏️ Chart module design style
 
 The template is made to be extremely flexible to cover all kinds of charts. BUT there are a few guidelines your chart module should follow to make it easier to use and adapt. 
 
-1. **Chart modules should be JavaScript classes**
+1. **Chart modules should be JavaScript classes.**
 
     ... so they are portable and can create multiple charts.
 
