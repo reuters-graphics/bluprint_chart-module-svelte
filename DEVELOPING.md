@@ -12,7 +12,8 @@
     - [Visual properties](#visual-properties)
     - [Translatable text](#translatable-text)
     - [Functions](#functions)
-    - [Accessor functions](#accessor-functions)
+    - [Accessors](#accessors)
+    - [Callbacks](#callbacks)
   - [Designing your draw function](#designing-your-draw-function)
   - [Making your chart responsive](#making-your-chart-responsive)
 
@@ -394,7 +395,7 @@ chart
   .draw();
 ```
 
-#### Accessor functions
+#### Accessors
 
 One special type of function is an accessor, which is a function used to get another value. Think of it as a map a user can give you that tells your chart how to find a piece of information.
 
@@ -469,6 +470,43 @@ chart
   })
   .draw();
 ```
+
+#### Callbacks
+
+You can handle complex interactions by passing callbacks to your chart, which will let users hook in when a user interacts with some part of your chart and update another part of the page.
+
+Usually the default for a callback is a useless function (a noop).
+
+```javascript
+class MyChart {
+  defaultProps = {
+    onClick = (datum) => datum,
+  }
+
+  draw() {
+    const props = this.props();
+
+    // ...
+
+    circles.on('click', (d) => {
+      props.onClick(d);
+    });
+  }
+}
+```
+
+Now your user can do something like navigate the entire page based on an interaction with your chart.
+
+```javascript
+chart
+  .props({
+    onClick: (d) => {
+      window.location.href = `/states/${d.postalCode}/`;
+    }
+  })
+  .draw();
+```
+
 #### In conclusion...
 
 Pushing as much as you can into props gives users the ability to deeply customize and control your chart. This may seem like a lot at first, but after you do it once or twice it'll become second nature to think of your chart in props.
