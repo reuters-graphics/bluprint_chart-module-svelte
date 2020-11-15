@@ -30,8 +30,8 @@
       "files": [
         "server/server.js",
         "server/pages/index.svelte",
-        "src/js/demo/AutoDoc.svelte",
-        "src/js/demo/Chart.svelte",
+        "src/demo/AutoDoc.svelte",
+        "src/demo/Chart.svelte",
         "src/js/index.js",
         "src/scss/_chart.scss",
         "src/scss/demo.scss",
@@ -58,11 +58,11 @@
     },
     {
       "action": "log",
-      "msg": "🏁 {green Done!} \nYou can run {yellow runner start} to start building your chart module."
+      "msg": "\n🏁 {green Done!}\n\nYou can run {yellow runner start} to start building your chart module."
     },
     {
       "action": "log",
-      "msg": "\n\nDon't forget to create a GitHub repo for this chart named:\n{yellow chart-module-{{ chartSlug }}}"
+      "msg": "\n\nDon't forget to create a GitHub repo for this chart named:\n{cyan chart-module-{{ chartSlug }}}\n"
     }
   ]
 }
