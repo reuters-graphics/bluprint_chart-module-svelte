@@ -14,8 +14,8 @@
     - [Functions](#functions)
     - [Accessors](#accessors)
     - [Callbacks](#callbacks)
-  - [Designing your draw function](#designing-your-draw-function)
-  - [Making your chart responsive](#making-your-chart-responsive)
+  - [Designing your draw function](#%EF%B8%8F-designing-your-draw-function)
+  - [Making your chart responsive](#%EF%B8%8F-making-your-chart-responsive)
 
 
 ## Quickstart
@@ -511,7 +511,7 @@ chart
 
 Pushing as much as you can into props gives users the ability to deeply customize and control your chart. This may seem like a lot at first, but after you do it once or twice it'll become second nature to think of your chart in props.
 
-### Designing your draw function
+### ✏️ Designing your draw function
 
 Remember, we want your chart to have **a single, idempotent function** that draws your chart with the data and props your users give your chart.
 
@@ -638,7 +638,7 @@ If at this point you've followed our module design style, then you can do almost
 Go for it!
 
 
-### Making your chart responsive
+### ✏️ Making your chart responsive
 
 In general, your chart should respect the boundaries of the container it's used in. At minimum, that means you should check the **width** of your container to determine the size of your chart.
 
