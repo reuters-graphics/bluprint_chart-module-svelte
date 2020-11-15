@@ -2,7 +2,7 @@
 
 # bluprint_chart-module-svelte
 
-This [bluprint](https://github.com/reuters-graphics/bluprint) contains a framework for writing reusable chart modules, which are dataviz tools that can easily be used across different contexts and frameworks.
+This [bluprint](https://github.com/reuters-graphics/bluprint) contains a framework for writing reusable chart modules, which are dataviz tools that can easily be used across different contexts and JS frameworks.
 
 This also contains a [Sapper](https://sapper.svelte.dev/) app that hosts a built-in interactive demo of your chart you can customize in [Svelte](https://svelte.dev/).
 
