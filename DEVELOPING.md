@@ -13,6 +13,8 @@
     - [Translatable text](#translatable-text)
     - [Functions](#functions)
     - [Accessor functions](#accessor-functions)
+  - [Designing your draw function](#designing-your-draw-function)
+  - [Making your chart responsive](#making-your-chart-responsive)
 
 
 ## Quickstart
@@ -47,7 +49,7 @@ The template is made to be extremely flexible to cover all kinds of charts. BUT 
 
     ... so they are portable and can create multiple charts.
 
-2. **Chart modules should be configurable and reconfigurable** by passing data and props to them.
+2. **Chart modules should be configurable** by passing data and props to them.
 
     ... so they can be customized to work with many datasets and multiple designs.
 
@@ -470,3 +472,150 @@ chart
 #### In conclusion...
 
 Pushing as much as you can into props gives users the ability to deeply customize and control your chart. This may seem like a lot at first, but after you do it once or twice it'll become second nature to think of your chart in props.
+
+### Designing your draw function
+
+Remember, we want your chart to have **a single, idempotent function** that draws your chart with the data and props your users give your chart.
+
+Let's break that down.
+
+#### Why a single function?
+
+Because we want our chart to be as simple as possible because that makes it predictable. There should be a one-to-one relationship between the data and props your users configure and the chart they get back. A single draw function simplifies that equation for you and your users.
+
+#### Why an "idempotent" function?
+
+Before we jump into some background theory here, just keep front-of-mind the goal is to make our chart extremely **predicatable**.
+
+Now let's talk about _idempotence_.
+
+"Idempotence" is a fancy word from math and computer science that means that the same operation produces the same result no matter how many times it's called.
+
+In terms of your chart module, it's a very important concept to make your chart reliable in whatever context it's used in.
+
+For example, given the same data and props, your chart should intelligently draw or redraw only those elements that are new or changed.
+
+```javascript
+// First time your chart is drawn, it should produce all the elements
+chart
+  .props(myProps)
+  .data(myData)
+  .draw();
+
+// A second time, called with the *same* data and props,
+// the chart shouldn't create, redraw or change any new
+// elements, because they're already there!
+chart
+  .props(myProps)
+  .data(myData)
+  .draw();
+
+// NEW data is passed to the chart, so the chart should
+// redraw the elements that have changed.
+chart
+  .data(newData)
+  .draw();
+```
+
+If you've used D3 before, you've already created idempotent chart elements by using D3's [general update pattern](https://observablehq.com/@d3/general-update-pattern).
+
+Consider this code:
+
+```javascript
+function draw(myData) {
+  const cirlces = svg.selectAll('circle')
+    .data(myData);
+
+  circles.enter().append('circle');
+
+  circles.attr('fill', 'blue');
+
+  circles.exit();
+}
+```
+
+If the `draw` function is called twice with the same data, D3 knows not to add new circles for ones already on the page. BUT if the data changes, D3 will add or remove circles to reflect your data.
+
+That means any **data-bound elements in your chart are already idempotent**, but that leaves out some non-data-bound elements you might be used to writing in your code.
+
+Consider this:
+
+```javascript
+function draw(myData) {
+  d3.select('div#chart').append('svg');
+
+  // ...
+}
+```
+
+Now if we call the draw function twice with the same data, the result _won't_ be the same. On the second call, D3 will add a new `svg` element to our div even though there's already one there.
+
+To help you make non-data-bound elements idempotent, you'll see the template use a special D3 helper method called `appendSelect`.
+
+You can use it like this:
+
+```javascript
+import d3 from './utils/d3';
+
+function draw(myData) {
+  d3.select('#chart').appendSelect('svg');
+
+  // ...
+}
+```
+
+Here's what that method does: `appendSelect` will first check if there's already an element within the parent selection (`d3.select(#chart)`) and _only_ append a new one if it doesn't find one there.
+
+If there _is_ one already, `appendSelect` will select it so you can continue chain chaining properties like you normally would.
+
+```javascript
+function draw(myData) {
+  d3.select('#chart')
+    .appendSelect('svg')
+    .attr('width', 300) // applied to the svg!
+    .attr('height', 300);
+
+  // ...
+}
+```
+
+You can also use classes to make your selector more specific in case there are multiple elements within the parent selection:
+
+```javascript
+d3.select('#chart')
+  .appendSelect('g.axis') // will ignore g.circles, etc.
+  .transform('translate(300, 0)');
+```
+
+> **UPSHOT:** Use `appendSelect` with non-data-bound elements in place of D3's normal `append` method to make your chart's draw method idempotent.
+
+Read more about `appendSelect` and the reasons we use it in the [docs for our D3 plugin](https://github.com/reuters-graphics/d3-appendselect).
+
+#### What else?
+
+That's up to you! Your draw function is where the real flexibility of our chart module pattern comes into play.
+
+If at this point you've followed our module design style, then you can do almost anything in your draw function including complex interactions.
+
+Go for it!
+
+
+### Making your chart responsive
+
+In general, your chart should respect the boundaries of the container it's used in. At minimum, that means you should check the **width** of your container to determine the size of your chart.
+
+```javascript
+class MyChart {
+  // ...
+
+  draw() {
+    // Use the selection getter and then get underlying node
+    const node = this.selection().node();
+
+    // Get the dimensions of the node with JS's getBouldingClientRect
+    const { width } = node.getBoundingClientRect();
+
+    // Use width in your chart...
+  }
+};
+```
