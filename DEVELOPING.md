@@ -6,7 +6,8 @@
 - [Building Reuters chart modules](#building-reuters-chart-modules)
   - [Chart module design style](#%EF%B8%8F-chart-module-design-style)
   - [Working with chart module classes](#%EF%B8%8F-working-with-chart-module-classes)
-  - [Using getter/setters to configure chart modules](#)
+  - [Using getter/setters to configure chart modules](#%EF%B8%8F-using-gettersetters-to-configure-chart-modules)
+    - [Getter/setters behind the scenes](#-bonus-gettersetters-behind-the-scenes)
 
 ## Quickstart
 
@@ -146,7 +147,7 @@ class MyChart {
 }
 ```
 
-Keep in mind how we want to use this method. We want to set some custom props like this:
+Keep in mind how we want to use this method. We want to _set_ some custom props like this:
 
 ```javascript
 chart.props({ myProp: '' });
@@ -162,9 +163,7 @@ class MyChart {
 }
 ```
 
-Stepping through the getter/setter then:
-
-If no props are passed when the method is called, we return the current props, which we've save to a private property `this._props`:
+Stepping through the getter/setter then, if no props are passed when the method is called, we return the current props, which we've saved to a private property `this._props`:
 
 ```javascript
 props(customProps) {
@@ -230,12 +229,12 @@ Now, your users can customize the geoData passed to your chart.
 chart.geoData([/* ... */]);
 ```
 
-As a bonus, you can add a little bit of data validation to give your chart's users some useful error messages when they pass data in a format you don't expect.
+As a bonus, you can add a little bit of data validation to give your chart's users some helpful error messages if they pass data in a format you don't expect.
 
 ```javascript
 geoData(topo) {
   if (!topo) return this._geoData;
-  // 👇 Add some data validation
+  // 👇 Some helpful data validation
   if (!Array.isArray(topo)) {
     throw new Error('Topojson should be an array');
   }
