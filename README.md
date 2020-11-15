@@ -2,9 +2,9 @@
 
 # bluprint_chart-module-svelte
 
-This [bluprint](https://github.com/reuters-graphics/bluprint) contains a framework for writing reusable chart modules, which can easily be used across different JS frameworks.
+This [bluprint](https://github.com/reuters-graphics/bluprint) contains a framework for writing reusable chart modules.
 
-The project also contains a [Sapper](https://sapper.svelte.dev/) app that hosts a built-in interactive demo of your chart you can customize in [Svelte](https://svelte.dev/). But don't be fooled, chart modules are Just JS™. No prior JS framework knowledge required.
+The template also contains a [Sapper](https://sapper.svelte.dev/) app that hosts a built-in interactive demo of your chart you can customize in [Svelte](https://svelte.dev/). But don't be fooled, chart modules are Just JS™. No prior Svelte knowledge required.
 
 ## Quickstart
 
@@ -39,7 +39,7 @@ The project also contains a [Sapper](https://sapper.svelte.dev/) app that hosts 
   $ runner build
   ```
 
-6. The build process will bundle your chart module for others to install from GitHub. It will also create a GitHub docs page to preview your chart, which you can publish by updating the GitHub Pages settings on your repo in GitHub (use the `docs/` folder on the `master` branch).
+6. The build process will bundle your chart module for others to install from GitHub. It will also create a GitHub docs page to preview your chart, which you can publish by updating the GitHub Pages settings on your repo in GitHub (use the `docs/` folder on the `master` branch). Don't forget to push to GitHub!
 
 
 ## Developing chart modules
