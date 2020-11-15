@@ -1,19 +1,19 @@
-<!-- ⭐ Write am interactive DEMO of your chart in this component.
+<!-- ⭐ Write an interactive DEMO of your chart in this component.
 Follow the notes below! -->
 
 <script>
   export let responsive; // eslint-disable-line ignore me...
   import { afterUpdate } from 'svelte';
   import AutoDoc from './AutoDoc.svelte';
-  import ChartModule from '../js';
+  import MyChartModule from '../js';
   
   let chartContainer;
 
   // 💪 Create a new chart instance of your module.
-  let chart = new ChartModule();
+  let chart = new MyChartModule();
   
-  // 🎚️ Create variables for any data or props or you want to use to
-  // be able to update in the demo. (Write buttons below!)
+  // 🎚️ Create variables for any data or props or you want users to be able
+  // to update in the demo. (And write buttons to update them below!)
   let chartData = [60, 40, 60]
   let circleFill = 'steelblue';
   // ...
@@ -36,7 +36,7 @@ Follow the notes below! -->
 <div class='chart-options'>
   <!-- ✏️ Create buttons that update your data/props variables when they're clicked! -->
   <button
-    on:click={() => { chartData = [20, 40, 80] }}
+    on:click={() => { chartData = [30, 50, 80] }}
   >New data</button>
   <button
     on:click={() => { circleFill = 'orange' }}

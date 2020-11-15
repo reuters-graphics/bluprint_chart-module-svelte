@@ -56,13 +56,18 @@ for your chart. In which case, follow the notes below! -->
   // customProps is a string representing the props that are different
   // from your charts' defaultProps.
   $: customProps = stringify(getCustomProps(chartProps, chart.defaultProps), { indent: '  ' })
-    .replace(/\n/g, '\n  '); // forces indenting props...
+    .replace(/\n/g, '\n  '); // forces indenting props 2 extra spaces...
   
-  // Installation documentation
-  const install = `$ yarn add https://github.com/reuters-graphics/my-chart-module.git`;
 
-  // JavaScript documentation.
-  $: code = `import Chart from '@reuters-graphics/my-chart-module';
+  /**
+   * ✏️ DOCUMENTATION STRINGS BELOW
+   */
+
+  // Installation docs
+  const installDocs = `$ yarn add https://github.com/reuters-graphics/chart-module-my-chart-module.git`;
+
+  // JavaScript docs
+  $: jsDocs = `import Chart from '@reuters-graphics/my-chart-module';
 
 const chart = new Chart();
 
@@ -72,8 +77,8 @@ chart
   .draw();
 `;
 
-  // SCSS documentation
-  const styles = `$MyChartModule-container: '.my-chart-container';
+  // SCSS docs
+  const styleDocs = `$MyChartModule-container: '.my-chart-module-container';
 
 @import '~@reuters-graphics/my-chart-module/src/scss/chart';`;
 
@@ -84,13 +89,14 @@ chart
 </svelte:head>
 
 <div class='chart-docs'>
-  <Highlight language={bash} code={install} />
-  <Highlight language={scss} code={styles} />
-  <Highlight language={javascript} {code} />
+  <Highlight language={bash} code={installDocs} />
+  <Highlight language={scss} code={styleDocs} />
+  <Highlight language={javascript} code={jsDocs} />
 </div>
 
+<!-- 🔗 A link to your chart's GitHub repo -->
 <div class='repo-link'>
-  <a href="https://github.com/reuters-graphics/my-chart-module" target="_blank">
+  <a href="https://github.com/reuters-graphics/chart-module-my-chart-module" target="_blank">
     <Icon icon={faGithub} />
   </a>
 </div>

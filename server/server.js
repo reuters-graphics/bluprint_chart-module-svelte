@@ -20,7 +20,7 @@ if (dev) {
 } else {
   polka()
     .use(
-      '/docs',
+      '/chart-module-my-chart-module',
       compression({ threshold: 0 }),
       sirv('server/static', { dev }),
       sapper.middleware()

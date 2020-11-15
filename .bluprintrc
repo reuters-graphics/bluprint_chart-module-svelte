@@ -1,0 +1,68 @@
+{
+  "bluprint": "^0.6.0",
+  "name": "Reusable chart module",
+  "category": "Chart modules",
+  "actions": [
+    {
+      "action": "prompt",
+      "questions": [{
+        "type": "text",
+        "name": "chartClass",
+        "message": "What should we call you chart class, e.g., StateMap?"
+      }, {
+        "type": "text",
+        "name": "chartSlug",
+        "message": "Gimme a slug for your chart, e.g., dual-axis-line-chart."
+      }]
+    },
+    {
+      "action": "remove",
+      "paths": ["README.md"]
+    },
+    {
+      "action": "move",
+      "paths": [
+        ["README_TEMPLATE.md", "README.md"]
+      ]
+    },
+    {
+      "action": "regexreplace",
+      "files": [
+        "server/server.js",
+        "server/pages/index.svelte",
+        "src/js/demo/AutoDoc.svelte",
+        "src/js/demo/Chart.svelte",
+        "src/js/index.js",
+        "src/scss/_chart.scss",
+        "src/scss/demo.scss",
+        ".tasksrc.js",
+        "package.json",
+        "README.md"
+      ],
+      "replace": [
+        ["MyChartModule", "{{ chartClass }}"],
+        ["my-chart-module", "{{ chartSlug }}"]
+      ]
+    },
+    {
+      "action": "log",
+      "msg": "⚙️ Installing dependencies..."
+    },
+    {
+      "action": "execute",
+      "cmds": [
+        ["yarn"],
+        ["git", ["init"]]
+      ],
+      "silent": true
+    },
+    {
+      "action": "log",
+      "msg": "🏁 {green Done!} \nYou can run {yellow runner start} to start building your chart module."
+    },
+    {
+      "action": "log",
+      "msg": "\n\nDon't forget to create a GitHub repo for this chart named:\n{yellow chart-module-{{ chartSlug }}}"
+    }
+  ]
+}

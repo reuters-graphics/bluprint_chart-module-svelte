@@ -1,22 +1,21 @@
 {
-  "name": "TODO",
-  "description": "TODO",
+  "name": "@reuters-graphics/my-chart-module",
   "version": "0.0.1",
   "main": "dist/index.js",
   "license": "MIT",
   "private": false,
-  "repository": "github:reuters-graphics/<your-repo-here>",
+  "repository": "github:reuters-graphics/chart-module-my-chart-module",
   "files": [
     "src/js/**/*",
     "src/scss/**/*",
     "badge.svg"
   ],
   "scripts": {
-    "start": "sapper dev --routes server/pages --src server --output server/node_modules/@sapper -o",
-    "build-docs": "sapper build --routes server/pages --src server --output server/node_modules/@sapper",
-    "export-docs": "sapper export --routes server/pages --src server --output server/node_modules/@sapper --static server/static --basepath docs && cp -R __sapper__/export/docs/ docs/",
-    "preview-docs": "serve ./",
-    "build-lib": "rollup -c rollup.config.lib.js"
+    "chart:dev": "sapper dev --routes server/pages --src server --output server/node_modules/@sapper -o",
+    "chart:build-docs": "sapper build --routes server/pages --src server --output server/node_modules/@sapper",
+    "chart:export-docs": "sapper export --routes server/pages --src server --output server/node_modules/@sapper --static server/static --basepath chart-module-my-chart-module && cp -R __sapper__/export/chart-module-my-chart-module/ docs/",
+    "chart:preview-docs": "serve ./",
+    "chart:build-lib": "rollup -c rollup.config.lib.js"
   },
   "dependencies": {
     "compression": "^1.7.1",

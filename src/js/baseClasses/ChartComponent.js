@@ -92,19 +92,22 @@ class ChartComponent {
     return this;
   }
 
-  // If you need to add ADDITIONAL data to your chart, you
-  // absolutely can! here's an example you can uncomment
-  // and customize for what you need.
-  //
+  /**
+   * If you need to add ADDITIONAL data to your chart, you absolutely can add it!
+   * Here's an example you can uncomment and customize for what you need.
+   *
+   * In your chart's draw method you'd be able to access this data like this:
+   * const geoData = this.geoData();
+   */
   // geoData(topojson) {
   //   if (!topojson) return this._topojson;
-  //   // Validate your data, maybe...
+  //   // Validate your data here, maybe...
   //   this._topojson = topojson;
   //   return this;
   // }
 
   /**
-   * This method should be filled in the chart module!
+   * This method should be overwritten in the chart module!
    */
   draw() {
     throw new ErrorDrawMethodUndefined(this.constructor.name);

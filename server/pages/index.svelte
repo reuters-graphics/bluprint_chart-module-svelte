@@ -12,7 +12,7 @@ let setWidth = (w) => { width = w; };
 </style>
 
 <svelte:head>
-	<title>Chart module demo</title>
+	<title>Reuters graphics reusable charts: MyChartModule</title>
 </svelte:head>
 <Nav />
 <article class='container-fluid'>

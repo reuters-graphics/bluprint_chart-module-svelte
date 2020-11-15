@@ -2,14 +2,18 @@ import * as d3 from 'd3';
 
 import BaseChartComponent from './baseClasses/ChartComponent';
 
-// Write your chart as a class with a single draw method that draws
-// your chart! This component inherits from a base class you can
-// see and customize in the baseClasses folder.
-class MyChart extends BaseChartComponent {
-  // Default props are the built-in styles your chart comes with
-  // that you want to allow a user to customize. Remember, you can
-  // pass in complex data here, like default d3 axes or accessor
-  // functions that allow for flexible data structors.
+/**
+ * Write your chart as a class with a single draw method that draws
+ * your chart! This component inherits from a base class you can
+ * see and customize in the baseClasses folder.
+ */
+class MyChartModule extends BaseChartComponent {
+  /**
+   * Default props are the built-in styles your chart comes with
+   * that you want to allow a user to customize. Remember, you can
+   * pass in complex data here, like default d3 axes or accessor
+   * functions that can get properties from your data.
+   */
   defaultProps = {
     stroke: '#aaa',
     strokeWidth: 1,
@@ -17,14 +21,18 @@ class MyChart extends BaseChartComponent {
     height: 200,
   };
 
-  // Default data for your chart. Generally, it's NOT a good idea to import
-  // a large dataset and assign it here b/c it'll make your component quite
-  // big in terms of file size. At minimum, though, you should assign an
-  // empty Array or Object, depending on what your chart expects.
+  /**
+   * Default data for your chart. Generally, it's NOT a good idea to import
+   * a big dataset and assign it here b/c it'll make your component quite
+   * large in terms of file size. At minimum, though, you should assign an
+   * empty Array or Object, depending on what your chart expects.
+   */
   defaultData = [];
 
-  // Write all your code to draw your chart in this function!
-  // Remember to use appendSelect!
+  /**
+   * Write all your code to draw your chart in this function!
+   * Remember to use appendSelect!
+   */
   draw() {
     const data = this.data(); // Data passed to your chart
     const props = this.props(); // Props passed to your chart
@@ -33,19 +41,22 @@ class MyChart extends BaseChartComponent {
     const { width } = node.getBoundingClientRect(); // Respect the width of your container!
 
     const transition = d3.transition()
-      .duration(750);
+      .duration(500);
 
     this.svg = this.selection()
       .appendSelect('svg') // 👈 Use appendSelect instead of append for non-data-bound elements!
       .attr('width', width)
       .attr('height', props.height);
-    // ☝️ Notice we're assigning the svg back onto the class instance, this.svg. That
-    // gives your uses an entry point to the SVG so they can write custom elements
-    // like legends or annotations directly on the chart outside your module if necessary.
-    // Generally, a good idea to think about those entry points, but not required!
+    /**
+     * 💡 Pro-tip: Notice we're assigning the SVG back onto the class instance, this.svg.
+     * That gives your uses an entry point to the SVG so they can write custom elements
+     * like legends or annotations directly on the chart outside your module if necessary.
+     * Generally, a good idea to think about those entry points, but not required!
+     */
 
-    // 💪 Blue skies from here on... Make your chart the way you want to!
-    // --------------------------------------------
+    /**
+     * 💪 Blue skies from here on... Make your chart the way you want to!
+     */
     const dataSum = data.reduce((a, c) => a + c, 0);
     const xOffset = width / 2 - dataSum / 2;
 
@@ -80,9 +91,8 @@ class MyChart extends BaseChartComponent {
             .remove())
       );
 
-    // Generally, you should always return the chart class from draw!
-    return this;
+    return this; // Generally, always return the chart class from draw!
   }
 }
 
-export default MyChart;
+export default MyChartModule;
