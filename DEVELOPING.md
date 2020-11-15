@@ -6,8 +6,14 @@
 - [Building Reuters chart modules](#building-reuters-chart-modules)
   - [Chart module design style](#%EF%B8%8F-chart-module-design-style)
   - [Working with chart module classes](#%EF%B8%8F-working-with-chart-module-classes)
-  - [Using getter/setters to configure chart modules](#%EF%B8%8F-using-gettersetters-to-configure-chart-modules)
+  - [Using getter/setters to customize your chart](#%EF%B8%8F-using-gettersetters-to-customize-your-chart)
     - [Getter/setters behind the scenes](#-bonus-gettersetters-behind-the-scenes)
+  - [Designing your chart props](#%EF%B8%8F-designing-your-chart-props)
+    - [Visual properties](#visual-properties)
+    - [Translatable text](#translatable-text)
+    - [Functions](#functions)
+    - [Accessor functions](#accessor-functions)
+
 
 ## Quickstart
 
@@ -30,6 +36,8 @@ The build process will bundle your chart module so others can install it from Gi
 ## Building Reuters chart modules
 
 The rest of this doc is a guide to building reusable charts with the chart module pattern included in this template.
+
+> 💡 **Pro tip:** There's a lot of information here, but the best way to learn is to play with the template and refer back to different parts of these docs as you go. Don't feel like you need to read it all to get started!
 
 ### ✏️ Chart module design style
 
@@ -86,7 +94,7 @@ export default MyChartModule;
 
 The base class includes some basic getter/setter functions and some validation that will throw useful errors if the _wrong_ data or props are passed to your chart. You can look at what's in the base class and customize those getter/setters and validations rules, but you don't have to.
 
-### ✏️ Using getter/setters to configure chart modules
+### ✏️ Using getter/setters to customize your chart
 
 Let's look at how you can use those getter/setter methods to set and access configuration options on your chart.
 
@@ -242,3 +250,223 @@ geoData(topo) {
   return this;
 }
 ```
+
+### ✏️ Designing your chart props
+
+As we've seen already, your users can use your chart's props to customize the visual features of your chart.
+
+When you're building a chart module, you'll usually start with just a couple customizable props and build more as your chart develops. Once you get the basics of your chart down, this is likely where you'll spend most of your time, adding new features through props and making your chart cover more use cases.
+
+Let's look at a couple common uses and a few more advanced ways you can use props to make your chart module very flexible.
+
+#### Visual properties
+
+The most common props customize visual properties like colors, dimensions and other style properties.
+
+```javascript
+class MyChart {
+  defaultProps = {
+    circleFill: 'orange',
+    circleStroke: '#333',
+    circleStrokeWidth: 2,
+    marginTop: 10,
+    marginBottom: 10,
+  }
+
+  draw() {
+    const props = this.props();
+
+    // ...
+
+    svg.appendSelect('circle')
+      .style('fill', props.fill)
+      .style('stroke', props.circleStroke)
+      .style('stroke-width', props.circleStrokeWidth);
+  }
+}
+```
+
+Now your users can overwrite those defaults:
+
+```javascript
+chart
+  .props({
+    circleFill: 'steelblue',
+  })
+  .draw();
+```
+
+Custom props are merged with defaults using [lodash](https://lodash.com/docs/4.17.15#merge), so you can group related props in an object and your users can customize just those parts they need to change.
+
+```javascript
+class MyChart {
+  defaultProps = {
+    circle: {
+      fill: 'orange',
+      stroke: '#333',
+      strokeWidth: 2,
+    },
+    margin: {
+      top: 10,
+      bottom: 10,
+    },
+  }
+}
+```
+
+```javascript
+chart
+  .props({
+    margin: { top: 20 },
+  })
+  .draw();
+```
+
+#### Translatable text
+
+It's generally a good idea for all the text in your chart to be customizable through props so it can be translated.
+
+```javascript
+class MyChart {
+  defaultProps = {
+    title: 'COVID-19 trends',
+    chatter: 'Europe is entering a second wave.',
+    yAxisLabel: 'Cases',
+    xAxisLabel: 'Date',
+  }
+
+  draw() {
+    const props = this.props();
+
+    // ...
+
+    svg.appendSelect('h4')
+      .text(props.title);
+  }
+}
+```
+
+Now your users can pass translated text to your chart:
+
+```javascript
+chart
+  .props({
+    title: 'COVID-19-Trends',
+    chatter: 'Europa tritt in eine zweite Welle ein.',
+    // ...
+  })
+  .draw();
+```
+
+#### Functions
+
+Beyond simple values, you can pass functions as props, which can let your users customize all kinds of things like d3 scales and parsers.
+
+```javascript
+class MyChart {
+  defaultProps = {
+    colorScale: d3.scaleLinear()
+      .domain([0, 100])
+      .range(['red', 'green']),
+    dateFormat: d3.timeFormat('%Y'),
+  }
+
+  draw() {
+    const props = this.props();
+
+    // ...
+
+    const dataColor = props.colorScale(someValue);
+  }
+}
+```
+
+```javascript
+chart
+  .props({
+    colorScale: d3.scaleThreshold()
+      .domain([100, 200])
+      .range(['red', 'white', 'green']),
+    dateFormat: d3.timeFormat('%Y-%m-%d'),
+  })
+  .draw();
+```
+
+#### Accessor functions
+
+One special type of function is an accessor, which is a function used to get another value. Think of it as a map a user can give you that tells your chart how to find a piece of information.
+
+One really common use for accessors is to parse data so your users can pass data in a variety of formats to your chart.
+
+```javascript
+class MyChart {
+  defaultData = [{ x:'2019', y: 10 }, { x:'2020', y: 12 }]
+
+  defaultProps = {
+    xAccessor: d => d.x,
+    yAccessor: d => d.y,
+  }
+
+  draw() {
+    const props = this.props();
+    const data = this.data();
+
+    // ...
+
+    const parsedData = data.map((d) => {
+      return {
+        x: props.xAccessor(d),
+        y: props.yAccessor(d),
+      };
+    });
+  }
+}
+```
+
+Now with those accessor props, your chart can accept data in just about any format.
+
+```javascript
+chart
+  .data([
+    { date: { year: '2019' }, value: 45 },
+    { date: { year: '2020' }, value: 53 },
+  ])
+  .props({
+    xAccessor: d => d.date.year,
+    yAccessor: d => d.value,
+  })
+  .draw();
+```
+
+In other cases, you can use accessors to give users complete control of parts of your chart. Take, for example, a tooltip:
+
+```javascript
+class MyChart {
+  defaultProps = {
+    tooltipContent: d => `<p>${d.date}</p>`,
+  }
+
+  draw() {
+    const props = this.props();
+
+    // ...
+
+    circles.on('mouseover', (d) => {
+      tooltip.html(props.tooltipContent(d))
+    });
+  }
+}
+```
+
+Now your users have complete control of how to fill out that tooltip.
+
+```javascript
+chart
+  .props({
+    tooltipContent: d => `<h5>${d.date}</h5><p>${d.value}</p>`;
+  })
+  .draw();
+```
+#### In conclusion...
+
+Pushing as much as you can into props gives users the ability to deeply customize and control your chart. This may seem like a lot at first, but after you do it once or twice it'll become second nature to think of your chart in props.
