@@ -678,9 +678,9 @@ The demo page for your chart is a place for users to see what your chart looks l
 
 > The demo page is written in [Svelte](https://svelte.dev/). You can learn all about Svelte from [their own docs](https://svelte.dev/tutorial/basics), but the demo page is designed for you to get by without knowing too much about it. This section is here to help. Read on.
 
-You'll write the demo of your chart in `src/demo/Chart.svelte`. You can follow the notes in that component to change your chart, but we'll go over some basic points here.
+You'll write the demo of your chart in `src/demo/Chart.svelte`. You can follow the notes in that component, but we'll go over some basic points here.
 
-At it's most basic, your chart demo can be written like this:
+At its most basic, your chart demo can be written like this:
 
 ```svelte
 <script>
@@ -702,9 +702,9 @@ At it's most basic, your chart demo can be written like this:
 <div id="chart" bind:this={chartContainer} />
 ```
 
-In order of importance, we import and instantiate your chart class, setup a container div (`#chart`) and then run your chart to draw chart elements inside that container.
+In order of operation, we import and instantiate your chart class, setup a container div (`#chart`) and then run your chart to draw chart elements inside that container.
 
-Notice the chart is actually run inside an `afterUpdate` function, which is a Svelte method that waits until the rest of the elements have been put on the page. That basically guarantees that the container `div` exists on the page _before_ we draw our chart inside it.
+Notice the chart is actually run inside an `afterUpdate` function, which is a Svelte method that waits until the rest of the elements have been put on the page. That basically guarantees that the container `div#chart` exists on the page _before_ we draw our chart inside it.
 
 From this basic setup, you can make `chartData` and `chartProps` whatever you want to demonstrate your chart's functionality. But let's quickly run through how to make some of those options interactive.
 
