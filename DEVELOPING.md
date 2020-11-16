@@ -411,9 +411,9 @@ chart
 
 #### Accessors
 
-One special type of function is an accessor, which is a function used to get another value. Think of it as a map a user can give you that tells your chart how to find a piece of information.
+One special type of function prop is an accessor, which is a function used to get another value. Think of it as a map a user can give you that tells your chart how to find a piece of information.
 
-One really common use for accessors is to parse data so your users can pass data in a variety of formats to your chart.
+One really common use for accessors is to parse data. Accessors let your users pass you their data in whatever format they have because it tells your chart how to get the information within that structure. Take a look:
 
 ```javascript
 class MyChart {
@@ -440,7 +440,7 @@ class MyChart {
 }
 ```
 
-Now with those accessor props, your chart can accept data in just about any format.
+Now with those accessor props, your chart can accept data in a different format and still parse the information it needs to draw the chart.
 
 ```javascript
 chart
@@ -489,12 +489,12 @@ chart
 
 You can handle complex interactions by passing callbacks to your chart, which will let users hook in when a user interacts with some part of your chart and update another part of the page.
 
-Usually the default for a callback is a useless function (a noop).
+Usually the default for a callback is a function that doesn't really do anything (a no-op).
 
 ```javascript
 class MyChart {
   defaultProps = {
-    onClick = (datum) => datum,
+    onClick = (datum) => datum, // 👈  no-op by default
   }
 
   draw() {
