@@ -16,6 +16,8 @@
     - [Callbacks](#callbacks)
   - [Designing your draw function](#%EF%B8%8F-designing-your-draw-function)
   - [Making your chart responsive](#%EF%B8%8F-making-your-chart-responsive)
+- [Building your demo page](#%EF%B8%8F-building-your-demo-page)
+  - [Interactive props and data](#interactive-props-and-data)
 
 
 ## Quickstart
@@ -521,7 +523,7 @@ chart
 
 > #### 🏁 In conclusion on props...
 > 
-> Pushing as much as you can into props gives users the ability to deeply customize and control your chart. This may seem like a lot at first, but after you do it once or twice it'll become second nature to think of your chart in props.
+> Pushing as much of the business logic as you can into props gives users the ability to deeply customize and control your chart. This may seem like a lot at first, but after you do it once or twice it'll become second nature to think of your chart in props.
 
 ### ✏️ Designing your draw function
 
@@ -669,3 +671,93 @@ class MyChart {
   }
 };
 ```
+
+## ✏️ Building your demo page
+
+The demo page for your chart is a place for users to see what your chart looks like and play with some of the options they can control via props.
+
+> The demo page is written in [Svelte](https://svelte.dev/). You can learn all about Svelte from [their own docs](https://svelte.dev/tutorial/basics), but the demo page is designed for you to get by without knowing too much about it. This section is here to help. Read on.
+
+You'll write the demo of your chart in `src/demo/Chart.svelte`. You can follow the notes in that component to change your chart, but we'll go over some basic points here.
+
+At it's most basic, your chart demo can be written like this:
+
+```svelte
+<script>
+  import MyChartModule from '../js';
+  
+  let chartContainer;
+
+  let chart = new MyChartModule();
+  
+  afterUpdate(() => {
+    chart
+      .selection(chartContainer)
+      .data(chartData)
+      .props(chartProps)
+      .draw();
+  });
+</script>
+
+<div id="chart" bind:this={chartContainer} />
+```
+
+In order of importance, we import and instantiate your chart class, setup a container div (`#chart`) and then run your chart to draw chart elements inside that container.
+
+Notice the chart is actually run inside an `afterUpdate` function, which is a Svelte method that waits until the rest of the elements have been put on the page. That basically guarantees that the container `div` exists on the page _before_ we draw our chart inside it.
+
+From this basic setup, you can make `chartData` and `chartProps` whatever you want to demonstrate your chart's functionality. But let's quickly run through how to make some of those options interactive.
+
+### Interactive props and data
+
+Svelte -- like React, Vue and other modern JS frameworks -- reacts to changes in data and updates the page to reflect them. You can read all about that [reactivity in Svelte's docs](https://svelte.dev/tutorial/reactive-assignments), but you should be able to get around without deeply understanding how it works, too.
+
+First off, let's set those chart data and props variables from above to real values:
+
+```svelte
+<script>
+  // ...
+  let chartData = [10, 20, 30];
+  let chartProps = { fill: 'steelblue' };
+  
+  afterUpdate(() => {
+    chart
+      .selection(chartContainer)
+      .data(chartData)
+      .props(chartProps)
+      .draw();
+  });
+</script>
+
+<div id="chart" bind:this={chartContainer} />
+```
+
+To make those updatable, we can simply add a way to reassign those variables to new values, for example, on a button click!
+
+```svelte
+<script>
+  // ...
+  let chartData = [10, 20, 30];
+  let chartProps = { fill: 'steelblue' };
+  // ...
+</script>
+
+<!-- ... -->
+
+<div>
+  <button
+    on:click={() => { chartData = [30, 50, 80] }}
+  >New data</button>
+  <button
+    on:click={() => { circleProps = { fill: 'orange' }; }}
+  >Orange fill</button>
+</div>
+```
+
+Now when a user clicks those buttons, Svelte will update the variables' values, which in turn triggers your chart's `draw` function to re-run.
+
+That's it!
+
+> You'll notice in the demo we separate all the props we want to update into separate variables and then re-gather them together into a `chartProps` object, assigned with a weird `$:` symbol before it.
+> 
+> Don't worry about that symbol too much. It's a [reactive declaration](https://svelte.dev/tutorial/reactive-declarations), which basically guarantees Svelte re-updates your chart (and the interactive docs made by the `AutoDoc` component) whenever any of the props values change. Just go with it for now, and you'll be fine.
