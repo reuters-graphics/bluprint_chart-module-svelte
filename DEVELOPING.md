@@ -519,9 +519,9 @@ chart
   .draw();
 ```
 
-#### In conclusion...
-
-Pushing as much as you can into props gives users the ability to deeply customize and control your chart. This may seem like a lot at first, but after you do it once or twice it'll become second nature to think of your chart in props.
+> #### 🏁 In conclusion on props...
+> 
+> Pushing as much as you can into props gives users the ability to deeply customize and control your chart. This may seem like a lot at first, but after you do it once or twice it'll become second nature to think of your chart in props.
 
 ### ✏️ Designing your draw function
 
