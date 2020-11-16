@@ -26,6 +26,18 @@ Start the development server to begin working on your chart module.
   $ runner start
   ```
 
+The files you'll use to build your chart module are all in the `src/` directory:
+
+```
+- src/
+  - demo/
+    - Chart.svelte 👈
+  - js/
+    - index.js 👈
+  - scss/
+    - _chart.scss 👈
+```
+
 Build your chart in the `src/js/index.js` file, write styles in `src/scss/_chart.scss` and customize the demo page in `src/demo/Chart.svelte`.
 
 When you're finished, build your chart.
@@ -299,7 +311,7 @@ chart
   .draw();
 ```
 
-Custom props are merged with defaults using [lodash](https://lodash.com/docs/4.17.15#merge), so you can group related props in an object and your users can customize just those parts they need to change.
+> 💡 **Pro tip:** Custom props are merged with defaults using [lodash](https://lodash.com/docs/4.17.15#merge), so you can group related props in an object and your users can customize just those parts they need to change.
 
 ```javascript
 class MyChart {
