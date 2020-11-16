@@ -413,7 +413,7 @@ chart
 
 One special type of function prop is an accessor, which is a function used to get another value. Think of it as a map a user can give you that tells your chart how to find a piece of information.
 
-One really common use for accessors is to parse data. Accessors let your users pass you their data in whatever format they have because it tells your chart how to get the information within that structure. Take a look:
+One really common use for accessors is to parse data. Accessors let your users pass you their data in whatever format they have because they tell your chart how to get the information within that data structure. Take a look:
 
 ```javascript
 class MyChart {
