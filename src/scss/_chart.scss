@@ -1,4 +1,35 @@
-#{$MyChartModule-container} {
-  /* Write your chart styles here */
+#{$test-container} {
+    /* Write your chart styles here */
+
+    //background-color: magenta;
+
+    //display: inline-block;
+    //width: 100%;
+
+    .axis {
+        text {
+            font-family: $font-family-sans-serif;
+            fill: $gray-400;
+            pointer-events: none;
+        }
+
+        .tick text {
+            font-size: .875rem;
+        }
+
+        line,
+        path {
+            stroke: $gray-400;
+            stroke-width: 0.5;
+            pointer-events: none;
+        }
+
+        .domain {
+            display: none;
+        }
+    }
+
+
 
 }
+
