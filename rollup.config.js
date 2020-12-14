@@ -4,6 +4,7 @@ import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
 import replace from '@rollup/plugin-replace';
 import resolve from '@rollup/plugin-node-resolve';
+import json from 'rollup-plugin-json';
 import svelte from 'rollup-plugin-svelte';
 import sveltePreprocess from 'svelte-preprocess';
 import { terser } from 'rollup-plugin-terser';
@@ -50,6 +51,7 @@ export default {
         dedupe: ['svelte'],
       }),
       commonjs(),
+      json(),
 
       legacy && babel({
         extensions: ['.js', '.mjs', '.html', '.svelte'],
@@ -95,6 +97,7 @@ export default {
         dedupe: ['svelte'],
       }),
       commonjs(),
+      json(),
     ],
     external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
 
