@@ -147,4 +147,3 @@ dist
 # End of https://www.toptal.com/developers/gitignore/api/macos,ubuntu,node
 
 __sapper__/
-dist/
