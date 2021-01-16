@@ -1,3 +1,5 @@
+import 'd3-transition';
+
 import * as d3 from 'd3-selection';
 
 import {
