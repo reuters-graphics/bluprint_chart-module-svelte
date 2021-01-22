@@ -28,8 +28,6 @@
     {
       "action": "regexreplace",
       "files": [
-        "server/server.js",
-        "server/pages/index.svelte",
         "src/demo/AutoDoc.svelte",
         "src/demo/Chart.svelte",
         "src/js/index.js",
