@@ -34,4 +34,9 @@ module.exports = {
     out: 'docs',
     baseUrl: '/chart-module-my-chart-module/',
   },
+  optimize: {
+    bundle: true,
+    minify: true,
+    target: 'es2018',
+  },
 };
