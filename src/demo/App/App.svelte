@@ -1,7 +1,7 @@
 <script>
-import Nav from '../components/Nav.svelte';
-import ChartContainer from '../components/ChartContainer.svelte';
-import Chart from './../../src/demo/Chart.svelte';
+import Nav from './Nav.svelte';
+import ChartContainer from './ChartContainer.svelte';
+import Chart from '../Chart.svelte';
 
 let width = '';
 let setWidth = (w) => { width = w; };
@@ -11,9 +11,6 @@ let setWidth = (w) => { width = w; };
 	@import './../src/scss/demo.scss';
 </style>
 
-<svelte:head>
-	<title>Reuters graphics reusable charts: MyChartModule</title>
-</svelte:head>
 <Nav />
 <article class='container-fluid'>
 	<ChartContainer width={width} setWidth={setWidth}>

@@ -4,7 +4,7 @@
 
 This [bluprint](https://github.com/reuters-graphics/bluprint) contains a framework for writing reusable chart modules.
 
-The template also contains a [Sapper](https://sapper.svelte.dev/) app that hosts a built-in interactive demo of your chart you can customize in [Svelte](https://svelte.dev/). But don't be fooled, chart modules are Just JS™. No prior Svelte knowledge required.
+The template also contains a [Svelte](https://svelte.dev/) app that hosts a built-in interactive demo of your chart. But don't be fooled, chart modules are Just JS™. No prior Svelte knowledge required.
 
 ## Quickstart
 

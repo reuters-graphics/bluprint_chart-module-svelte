@@ -37,7 +37,8 @@
         "src/scss/demo.scss",
         ".tasksrc.js",
         "package.json",
-        "README.md"
+        "README.md",
+        "snowpack.config.js"
       ],
       "replace": [
         ["MyChartModule", "{{ chartClass }}"],
