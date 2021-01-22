@@ -98,6 +98,7 @@ class MyChartModule extends BaseChartComponent {
             .style('stroke-width', props.strokeWidth)
             .attr('cy', d => yScale(d.y))
             .attr('cx', d => xScale(d.x))
+            .attr('r', 0)
             .call(enter => enter.transition(transition)
               .attr('r', d => d.r)
             ),

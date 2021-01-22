@@ -1,5 +1,5 @@
 <style lang="scss">
-	@import "@reuters-graphics/style-color/scss/thematic/brand";
+	@import "~@reuters-graphics/style-color/scss/thematic/brand";
 	nav{
 		padding: 20px 0;
 		text-align: center;

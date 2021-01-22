@@ -1,51 +1,32 @@
 module.exports = {
   scripts: {
-    'sapper': 'sapper',
+    'snowpack': 'snowpack',
     'rollup': 'rollup',
-    'serve': 'serve',
   },
   tasks: {
     start: {
       run: [
-        ['echo', ['Getting started...']],
-        ['sapper', ['dev'], {
-          routes: 'server/pages',
-          src: 'server',
-          output: 'server/node_modules/@sapper',
-          o: true,
-        }],
+        ['echo', ['⚙️ Getting started...']],
+        ['snowpack', ['dev']],
       ],
     },
     'build-docs': {
       run: [
-        ['echo', ['Building docs...']],
-        ['sapper', ['export'], {
-          routes: 'server/pages',
-          src: 'server',
-          output: 'server/node_modules/@sapper',
-          static: 'server/static',
-          basepath: 'chart-module-my-chart-module'
-        }],
-        ['cp', ['-R', '__sapper__/export/chart-module-my-chart-module/', 'docs/']],
-        ['echo', ['run "$ runner preview" to preview your built docs']]
+        ['echo', ['⚙️ Building docs...']],
+        ['snowpack', ['build']],
       ],
     },
-    'build-pack': {
+    'build-lib': {
       run: [
-        ['echo', ['Building package...']],
+        ['echo', ['⚙️ Building library...']],
         ['rollup', { c: 'rollup.config.lib.js' }],
-      ],
-    },
-    preview: {
-      run: [
-        ['open', ['http://localhost:5000/docs/']],
-        ['serve', ['./']],
       ],
     },
     build: {
       run: [
-        'build-pack',
+        'build-lib',
         'build-docs',
+        ['echo', ['🏁 All done. Push to GitHub and use your chart!']],
       ],
     },
   },
@@ -53,6 +34,5 @@ module.exports = {
     '-- MAIN TASKS -- ': '',
     'start': 'Develop your chart project',
     'build': 'Build your chart library and interactive docs',
-    'preview': 'Preview built files',
   },
 }

@@ -6,14 +6,11 @@ Follow the notes below! -->
   import AutoDoc from './AutoDoc.svelte';
   import MyChartModule from '../js';
 
-  let chartContainer;
-
-  // 💪 Create a new chart instance of your module.
   let chart = new MyChartModule();
+  let chartContainer;
 
   // 🎚️ Create variables for any data or props you want users to be able
   // to update in the demo. (And write buttons to update them below!)
-
   let chartData = getRandomData();
 
   let circleFill = 'steelblue';
@@ -23,7 +20,9 @@ Follow the notes below! -->
   $: chartProps = { fill: circleFill };
 
   afterUpdate(() => {
-    // ⚡ Finally, let's use your chart!
+    // 💪 Create a new chart instance of your module.
+    chart = new MyChartModule();
+    // ⚡ And let's use your chart!
     chart
       .selection(chartContainer)
       .data(chartData) // Pass your chartData
