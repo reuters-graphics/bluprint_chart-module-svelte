@@ -29,7 +29,7 @@
       "action": "regexreplace",
       "files": [
         "public/index.html",
-        "src/demo/AutoDoc.svelte",
+        "src/demo/App/Docs.svelte",
         "src/demo/Chart.svelte",
         "src/js/index.js",
         "src/scss/_chart.scss",
