@@ -2,6 +2,8 @@
 
 # MyChartModule
 
+See the [demo page](https://reuters-graphics.github.io/chart-module-my-chart-module/).
+
 ### Install
 
 ```

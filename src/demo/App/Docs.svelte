@@ -31,33 +31,12 @@ for your chart. In which case, follow the notes below! -->
 </style>
 
 <script>
-  export let chart;
-  export let chartProps;
-  import transform from 'lodash/transform';
-  import isEqual from 'lodash/isEqual';
-  import isObject from 'lodash/isObject';
   import { Highlight } from "svelte-highlight";
   import { javascript, bash, scss } from "svelte-highlight/languages";
   import { github } from "svelte-highlight/styles";
-  import stringify from 'stringify-object';
   import { faGithub } from '@fortawesome/free-brands-svg-icons';
   import Icon from 'fa-svelte';
 
-  const getCustomProps = (object, base) => {
-    const changes = (object, base) =>
-      transform(object, (result, value, key) => {
-        if (!isEqual(value, base[key])) {
-          result[key] = (isObject(value) && isObject(base[key])) ? changes(value, base[key]) : value;
-        }
-      });
-    return changes(object, base);
-  }
-
-  // customProps is a string representing the props that are different
-  // from your charts' defaultProps.
-  $: customProps = stringify(getCustomProps(chartProps, chart.defaultProps), { indent: '  ' })
-    .replace(/\n/g, '\n  '); // forces indenting props 2 extra spaces...
-  
 
   /**
    * ✏️ DOCUMENTATION STRINGS BELOW
@@ -73,7 +52,7 @@ const chart = new Chart();
 
 chart
   .data(yourData)
-  .props(${customProps})
+  .props(yourProps)
   .draw();
 `;
 
@@ -88,7 +67,10 @@ chart
   {@html github}
 </svelte:head>
 
+
+
 <div class='chart-docs'>
+  <h5>Use</h5>
   <Highlight language={bash} code={installDocs} />
   <Highlight language={scss} code={styleDocs} />
   <Highlight language={javascript} code={jsDocs} />

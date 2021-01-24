@@ -3,8 +3,9 @@ Follow the notes below! -->
 <script>
   export let responsive; // eslint-disable-line
   import { afterUpdate } from 'svelte';
-  import AutoDoc from './AutoDoc.svelte';
-  import MyChartModule from '../js';
+  import Docs from './App/Docs.svelte';
+  import Explorer from './App/Explorer.svelte';
+  import MyChartModule from '../js/index';
 
   let chart = new MyChartModule();
   let chartContainer;
@@ -54,7 +55,7 @@ Follow the notes below! -->
   }
 </style>
 
-<div id="chart" bind:this={chartContainer} />
+<div id="my-chart-module-container" bind:this={chartContainer} />
 
 <div class="chart-options">
   <!-- ✏️ Create buttons that update your data/props variables when they're clicked! -->
@@ -68,7 +69,7 @@ Follow the notes below! -->
     }}>Change fill</button>
 </div>
 
-<!-- ⚙️ This component will automatically create interactive documentation
-for you chart that will update as a user plays with the custom props you
-provided for above! -->
-<AutoDoc {chartProps} {chart} />
+<!-- ⚙️ These components will automatically create interactive documentation for you chart! -->
+<Docs />
+<Explorer title='Data' data={chart.data()} />
+<Explorer title='Props' data={chart.props()} />

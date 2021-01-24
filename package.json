@@ -2,6 +2,7 @@
   "name": "@reuters-graphics/my-chart-module",
   "version": "0.0.1",
   "main": "dist/index.js",
+  "module": "src/js/index.js",
   "license": "MIT",
   "private": false,
   "repository": "github:reuters-graphics/chart-module-my-chart-module",
@@ -18,7 +19,11 @@
   },
   "dependencies": {
     "d3": "^6.2.0",
-    "d3-appendselect": "^0.0.4",
+    "d3-appendselect": "^0.1.0",
+    "d3-array": "^2.10.0",
+    "d3-axis": "^2.0.0",
+    "d3-scale": "^3.2.3",
+    "d3-selection": "^2.0.0",
     "lodash": "^4.17.20"
   },
   "devDependencies": {
@@ -37,7 +42,6 @@
     "@rollup/plugin-node-resolve": "^8.0.0",
     "@rollup/plugin-replace": "^2.2.0",
     "@rollup/plugin-url": "^5.0.0",
-    "@snowpack/plugin-sass": "^1.3.0",
     "@snowpack/plugin-svelte": "^3.5.2",
     "autoprefixer": "^10.0.2",
     "eslint": "^7.13.0",
@@ -54,6 +58,7 @@
     "stringify-object": "^3.3.0",
     "svelte": "^3.17.3",
     "svelte-highlight": "^0.6.2",
+    "svelte-json-tree": "^0.1.0",
     "svelte-preprocess": "4.5.2"
   }
 }

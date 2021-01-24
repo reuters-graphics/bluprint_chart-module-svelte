@@ -19,16 +19,14 @@ module.exports = {
     src: '/dist',
   },
   plugins: [
-    ['@snowpack/plugin-svelte', {
-      preprocess,
-      hmrOptions: {
-        optimistic: false,
-      },
-    }],
+    ['@snowpack/plugin-svelte', { preprocess }],
+    ['./snowpack.plugin.sass.js'],
   ],
+  alias: {
+    '~@reuters-graphics': '@reuters-graphics',
+  },
   devOptions: {
     port: 3000,
-    open: 'brave',
   },
   buildOptions: {
     out: 'docs',
@@ -38,5 +36,8 @@ module.exports = {
     bundle: true,
     minify: true,
     target: 'es2018',
+  },
+  packageOptions: {
+    source: 'local',
   },
 };

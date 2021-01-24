@@ -7,9 +7,6 @@ let width = '';
 let setWidth = (w) => { width = w; };
 
 </script>
-<style lang="scss" global>
-	@import './../src/scss/demo.scss';
-</style>
 
 <Nav />
 <article class='container-fluid'>
@@ -17,3 +14,9 @@ let setWidth = (w) => { width = w; };
 		<Chart responsive={width} />
 	</ChartContainer>
 </article>
+
+<style>
+	article{
+		padding-bottom: 80px;
+	}
+</style>

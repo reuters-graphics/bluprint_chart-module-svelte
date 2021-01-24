@@ -1,6 +1,8 @@
 @import '~@reuters-graphics/style-theme-eisbaer/scss/main';
 @import '~@reuters-graphics/style-color/scss/thematic/brand';
 
+$MyChartModule-container: '#my-chart-module-container' !default;
+
 #{$MyChartModule-container} {
   /* Write your chart styles here */
   .axis {
@@ -13,8 +15,8 @@
 
     line,
     path {
-      stroke: $gray-200;
-      stroke-width: 0.5;
+      stroke: $gray-600;
+      stroke-width: 1px;
     }
 
     path.domain {

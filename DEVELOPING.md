@@ -97,19 +97,35 @@ chart
 chart.draw();
 ```
 
-You can write your chart module class any way you want, but as a shortcut, we start you off by extending a base class that's included in the template:
+You can write your chart module class any way you want, but as a shortcut, we start you off with some basic boilerplate:
 
 ```javascript
-import BaseChartComponent from './baseClasses/ChartComponent';
+class MyChart {
+  selection(selector) {
+    // Get/set your chart's container...
+  }
 
-class MyChartModule extends BaseChartComponent {
-  // your chart stuff ...
+  data(newData) {
+    // Get/set your charts data...
+  }
+
+  props(newProps) {
+    // Get/set some visual properties of your chart...
+  }
+
+  defaultData = []; // Some default data...
+
+  defaultProps = {}; // Some default props...
+
+  draw() {
+    // 👈  Where you'll write your chart code!
+  }
 }
 
-export default MyChartModule;
+export default MyChart;
 ```
 
-The base class includes some basic getter/setter functions and some validation that will throw useful errors if the _wrong_ data or props are passed to your chart. You can look at what's in the base class and customize those getter/setters and validations rules, but you don't have to.
+The base class includes some basic getter/setter functions and defaults to make your chart easy to use.
 
 ### ✏️ Using getter/setters to customize your chart
 
@@ -118,7 +134,7 @@ Let's look at how you can use those getter/setter methods to set and access conf
 In your chart module, you can set up default data and props by putting `defaultData` and `defaultProps` properties on the class.
 
 ```javascript
-class MyChart extends BaseChartComponent {
+class MyChart {
   defaultData = someData;
 
   defaultProps = {
@@ -143,7 +159,7 @@ chart
 Inside your chart module's `draw` method, you can use the built-in **_getters_** to access those configured data and props.
 
 ```javascript
-class MyChart extends ChartComponent {
+class MyChart {
 
   draw() {
     const data = this.data();
@@ -159,14 +175,14 @@ The getter/setters we're talking about here are a little different from the [get
 
 The difference allows us to chain getter/setter methods together with other methods on our module and is used widely in [D3.js objects like scales and axes](https://bost.ocks.org/mike/chart/#reconfiguration).
 
-Let's look at one:
+Let's look at a simplified one:
 
 ```javascript
 class MyChart {
   // Getter/setter
-  props(customProps) {
-    if (!customProps) return this._props;
-    this._props = customProps;
+  props(newProps) {
+    if (!newProps) return this._props;
+    this._props = newProps;
     return this;
   }
 }
@@ -233,9 +249,9 @@ Using this pattern, you can add additional getter/setters in your chart class if
 class MyChart {
 
   // Our getter/setter
-  geoData(topo) {
-    if (!topo) return this._geoData;
-    this._geoData = topo;
+  geoData(topojson) {
+    if (!topojson) return this._geoData;
+    this._geoData = topojson;
     return this;
   }
 
@@ -254,7 +270,7 @@ Now, your users can customize the geoData passed to your chart.
 chart.geoData([/* ... */]);
 ```
 
-As a bonus, you can add a little bit of data validation to give your chart's users some helpful error messages if they pass data in a format you don't expect.
+As a bonus, writing these as getter/setters let's you add a little bit of data validation so your chart can give users helpful error messages if they pass data in a format you don't expect.
 
 ```javascript
 geoData(topo) {
