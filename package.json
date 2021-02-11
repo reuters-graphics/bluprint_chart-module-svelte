@@ -10,6 +10,7 @@
   "files": [
     "src/js/**/*",
     "src/scss/**/*",
+    "!src/scss/demo.scss",
     "badge.svg"
   ],
   "scripts": {
