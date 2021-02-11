@@ -15,7 +15,11 @@
   "scripts": {
     "chart:dev": "snowpack dev",
     "chart:build-docs": "snowpack build",
-    "chart:build-lib": "rollup -c rollup.config.lib.js"
+    "chart:build-lib": "rollup -c rollup.config.lib.js",
+    "lint:js": "prettier --write 'src/js/**/*.js'",
+    "lint:scss": "prettier --write 'src/scss/**/*.scss'",
+    "lint:svelte": "prettier --write 'src/demo/**/*.svelte'",
+    "lint": "yarn lint:js && yarn lint:scss && yarn lint:svelte"
   },
   "dependencies": {
     "d3": "^6.2.0",
@@ -48,6 +52,8 @@
     "eslint-plugin-svelte3": "^2.7.3",
     "fa-svelte": "^3.1.0",
     "postcss": "^8.1.7",
+    "prettier": "^2.2.1",
+    "prettier-plugin-svelte": "^2.1.4",
     "rollup": "^2.3.4",
     "rollup-plugin-alias": "^2.2.0",
     "rollup-plugin-babel": "^4.4.0",

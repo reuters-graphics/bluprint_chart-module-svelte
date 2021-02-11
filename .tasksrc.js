@@ -24,6 +24,7 @@ module.exports = {
     },
     build: {
       run: [
+        'lint',
         'build-lib',
         'build-docs',
         ['echo', ['🏁 All done. Push to GitHub and use your chart!']],
