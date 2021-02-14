@@ -1,5 +1,5 @@
 {
-  "name": "@reuters-graphics/my-chart-module",
+  "name": "@reuters-graphics/chart-module-my-chart-module",
   "version": "0.0.1",
   "main": "dist/index.js",
   "module": "src/js/index.js",
