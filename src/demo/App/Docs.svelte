@@ -46,7 +46,7 @@ for your chart. In which case, follow the notes below! -->
   const installDocs = `$ yarn add https://github.com/reuters-graphics/chart-module-my-chart-module.git`;
 
   // JavaScript docs
-  $: jsDocs = `import Chart from '@reuters-graphics/my-chart-module';
+  $: jsDocs = `import Chart from '@reuters-graphics/chart-module-my-chart-module';
 
 const chart = new Chart();
 
@@ -59,7 +59,7 @@ chart
   // SCSS docs
   const styleDocs = `$MyChartModule-container: '.my-chart-module-container';
 
-@import '~@reuters-graphics/my-chart-module/src/scss/chart';`;
+@import '~@reuters-graphics/chart-module-my-chart-module/src/scss/chart';`;
 
 </script>
 
