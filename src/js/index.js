@@ -1,13 +1,6 @@
-import 'd3-transition';
-
 import * as d3 from 'd3';
-
-//import { axisBottom, axisLeft } from 'd3-axis';
-
 import { appendSelect } from 'd3-appendselect';
-// import { extent } from 'd3-array';
 import merge from 'lodash/merge';
-// import { scaleLinear } from 'd3-scale';
 
 d3.selection.prototype.appendSelect = appendSelect;
 
