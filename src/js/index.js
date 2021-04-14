@@ -1,13 +1,13 @@
 import 'd3-transition';
 
-import * as d3 from 'd3-selection';
+import * as d3 from 'd3';
 
-import { axisBottom, axisLeft } from 'd3-axis';
+//import { axisBottom, axisLeft } from 'd3-axis';
 
 import { appendSelect } from 'd3-appendselect';
-import { extent } from 'd3-array';
+// import { extent } from 'd3-array';
 import merge from 'lodash/merge';
-import { scaleLinear } from 'd3-scale';
+// import { scaleLinear } from 'd3-scale';
 
 d3.selection.prototype.appendSelect = appendSelect;
 
@@ -81,16 +81,16 @@ class MyChartModule {
     const width = containerWidth - margin.left - margin.right;
     const height = (containerWidth * props.aspectHeight) - margin.top - margin.bottom;
 
-    const xScale = scaleLinear()
+    const xScale = d3.scaleLinear()
       .domain([0, 100])
       .range([0, width]);
 
-    const yScale = scaleLinear()
+    const yScale = d3.scaleLinear()
       .domain([0, 100])
       .range([height, 0]);
 
-    const rScale = scaleLinear()
-      .domain(extent(data, d => d.r))
+    const rScale = d3.scaleLinear()
+      .domain(d3.extent(data, d => d.r))
       .range([10, 25]);
 
     const plot = this.selection()
@@ -103,11 +103,11 @@ class MyChartModule {
     plot
       .appendSelect('g.axis.x')
       .attr('transform', `translate(0,${height})`)
-      .call(axisBottom(xScale));
+      .call(d3.axisBottom(xScale));
 
     plot
       .appendSelect('g.axis.y')
-      .call(axisLeft(yScale));
+      .call(d3.axisLeft(yScale));
 
     const transition = plot.transition().duration(500);
 
