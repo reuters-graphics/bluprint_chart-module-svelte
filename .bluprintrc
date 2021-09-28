@@ -58,7 +58,7 @@
     },
     {
       "action": "log",
-      "msg": "\n🏁 {green Done!}\n\nYou can run {yellow runner start} to start building your chart module."
+      "msg": "\n🏁 {green Done!}\n\nYou can run {yellow yarn start} to start building your chart module."
     },
     {
       "action": "log",

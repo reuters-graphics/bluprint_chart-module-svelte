@@ -19,13 +19,12 @@
 - [Building your demo page](#%EF%B8%8F-building-your-demo-page)
   - [Interactive props and data](#interactive-props-and-data)
 
-
 ## Quickstart
 
 Start the development server to begin working on your chart module.
 
   ```
-  $ runner start
+  yarn start
   ```
 
 The files you'll use to build your chart module are all in the `src/` directory:
@@ -45,7 +44,7 @@ Build your chart in the `src/js/index.js` file, write styles in `src/scss/_chart
 When you're finished, build your chart.
 
   ```
-  $ runner build
+  yarn build
   ```
 
 The build process will bundle your chart module so others can install it from GitHub or npm. It will also create a GitHub docs page to preview your chart, which you can publish by updating the GitHub Pages settings on your repo in GitHub (use the `docs/` folder on the `master` branch).
@@ -58,7 +57,7 @@ The rest of this doc is a guide to building reusable charts with the chart modul
 
 ### ✏️ Chart module design style
 
-The template is made to be extremely flexible to cover all kinds of charts. BUT there are a few guidelines your chart module should follow to make it easier to use and adapt. 
+The template is made to be extremely flexible to cover all kinds of charts. BUT there are a few guidelines your chart module should follow to make it easier to use and adapt.
 
 1. **Chart modules should be JavaScript classes.**
 
@@ -75,7 +74,6 @@ The template is made to be extremely flexible to cover all kinds of charts. BUT 
 4. **Chart modules should respond to the dimensions of their containers**, at least the width.
 
     ... so they will work on any device or in any design layout.
-
 
 ### ✏️ Working with chart module classes
 
@@ -241,7 +239,6 @@ chart
   .props({})
   .draw(); // 👈
 ```
-
 
 Using this pattern, you can add additional getter/setters in your chart class if you need them. For example, here's how you might write one to allow your chart to be passed some topojson.
 
@@ -537,8 +534,8 @@ chart
   .draw();
 ```
 
-> #### 🏁 In conclusion on props...
-> 
+> #### 🏁 In conclusion on props
+>
 > Pushing as much of the business logic as you can into props gives users the ability to deeply customize and control your chart. This may seem like a lot at first, but after you do it once or twice it'll become second nature to think of your chart in props.
 
 ### ✏️ Designing your draw function
@@ -667,7 +664,6 @@ If at this point you've followed our module design style, then you can do almost
 
 Go for it!
 
-
 ### ✏️ Making your chart responsive
 
 In general, your chart should respect the boundaries of the container it's used in. At minimum, that means you should check the **width** of your container to determine the size of your chart.
@@ -775,5 +771,5 @@ Now when a user clicks those buttons, Svelte will update the variables' values, 
 That's it!
 
 > You'll notice in the demo we separate all the props we want to update into separate variables and then re-gather them together into a `chartProps` object, assigned with a weird `$:` symbol before it.
-> 
+>
 > Don't worry about that symbol too much. It's a [reactive declaration](https://svelte.dev/tutorial/reactive-declarations), which basically guarantees Svelte re-updates your chart (and the interactive docs made by the `AutoDoc` component) whenever any of the props values change. Just go with it for now, and you'll be fine.

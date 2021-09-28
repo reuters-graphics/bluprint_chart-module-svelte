@@ -1,6 +1,7 @@
 import * as d3 from 'd3';
+
 import { appendSelect } from 'd3-appendselect';
-import merge from 'lodash/merge';
+import { merge } from 'lodash-es';
 
 d3.selection.prototype.appendSelect = appendSelect;
 

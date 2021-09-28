@@ -20,7 +20,7 @@ module.exports = {
   },
   plugins: [
     ['@snowpack/plugin-svelte', { preprocess }],
-    ['./snowpack.plugin.sass.js'],
+    ['./snowpack.plugin.sass.cjs'],
   ],
   alias: {
     '~@reuters-graphics': '@reuters-graphics',
