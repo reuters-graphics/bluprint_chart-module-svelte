@@ -46,6 +46,27 @@ Follow the notes below! -->
   }
 </script>
 
+<div id="my-chart-module-container" bind:this={chartContainer} />
+
+<div class="chart-options">
+  <!-- ✏️ Create buttons that update your data/props variables when they're clicked! -->
+  <button
+    on:click={() => {
+      chartData = getRandomData();
+    }}>New data</button
+  >
+  <button
+    on:click={() => {
+      circleFill = circleFill === 'orange' ? 'steelblue' : 'orange';
+    }}>Change fill</button
+  >
+</div>
+
+<!-- ⚙️ These components will automatically create interactive documentation for you chart! -->
+<Docs />
+<Explorer title="Data" data={chart.data()} />
+<Explorer title="Props" data={chart.props()} />
+
 <!-- 🖌️ Style your demo page here -->
 <style lang="scss">
   .chart-options {
@@ -54,22 +75,3 @@ Follow the notes below! -->
     }
   }
 </style>
-
-<div id="my-chart-module-container" bind:this={chartContainer} />
-
-<div class="chart-options">
-  <!-- ✏️ Create buttons that update your data/props variables when they're clicked! -->
-  <button
-    on:click={() => {
-      chartData = getRandomData();
-    }}>New data</button>
-  <button
-    on:click={() => {
-      circleFill = circleFill === 'orange' ? 'steelblue' : 'orange';
-    }}>Change fill</button>
-</div>
-
-<!-- ⚙️ These components will automatically create interactive documentation for you chart! -->
-<Docs />
-<Explorer title='Data' data={chart.data()} />
-<Explorer title='Props' data={chart.props()} />

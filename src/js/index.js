@@ -73,18 +73,16 @@ class MyChartModule {
     const { width: containerWidth } = container.getBoundingClientRect(); // Respect the width of your container!
 
     const width = containerWidth - margin.left - margin.right;
-    const height = (containerWidth * props.aspectHeight) - margin.top - margin.bottom;
+    const height =
+      containerWidth * props.aspectHeight - margin.top - margin.bottom;
 
-    const xScale = d3.scaleLinear()
-      .domain([0, 100])
-      .range([0, width]);
+    const xScale = d3.scaleLinear().domain([0, 100]).range([0, width]);
 
-    const yScale = d3.scaleLinear()
-      .domain([0, 100])
-      .range([height, 0]);
+    const yScale = d3.scaleLinear().domain([0, 100]).range([height, 0]);
 
-    const rScale = d3.scaleLinear()
-      .domain(d3.extent(data, d => d.r))
+    const rScale = d3
+      .scaleLinear()
+      .domain(d3.extent(data, (d) => d.r))
       .range([10, 25]);
 
     const plot = this.selection()
@@ -99,9 +97,7 @@ class MyChartModule {
       .attr('transform', `translate(0,${height})`)
       .call(d3.axisBottom(xScale));
 
-    plot
-      .appendSelect('g.axis.y')
-      .call(d3.axisLeft(yScale));
+    plot.appendSelect('g.axis.y').call(d3.axisLeft(yScale));
 
     const transition = plot.transition().duration(500);
 
@@ -110,18 +106,23 @@ class MyChartModule {
      * Read more about that here: https://observablehq.com/@d3/selection-join
      * ... or feel free to use the old, reliable General Update Pattern.
      */
-    plot.selectAll('circle')
+    plot
+      .selectAll('circle')
       .data(data)
       .join(
-        enter => enter.append('circle')
-          .attr('cy', d => yScale(d.y))
-          .attr('cx', d => xScale(d.x))
-          .attr('r', d => rScale(d.r)),
-        update => update
-          .call(update => update.transition(transition)
-            .attr('cy', d => yScale(d.y))
-            .attr('cx', d => xScale(d.x))
-            .attr('r', d => rScale(d.r))
+        (enter) =>
+          enter
+            .append('circle')
+            .attr('cy', (d) => yScale(d.y))
+            .attr('cx', (d) => xScale(d.x))
+            .attr('r', (d) => rScale(d.r)),
+        (update) =>
+          update.call((update) =>
+            update
+              .transition(transition)
+              .attr('cy', (d) => yScale(d.y))
+              .attr('cx', (d) => xScale(d.x))
+              .attr('r', (d) => rScale(d.r))
           )
       )
       .style('fill', props.fill);

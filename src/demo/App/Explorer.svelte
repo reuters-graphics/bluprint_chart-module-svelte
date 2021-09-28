@@ -6,6 +6,13 @@
 
 <h5>{title}</h5>
 
+<div
+  class="code-explorer"
+  style="--json-tree-font-size: 1rem; --json-tree-font-family: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;"
+>
+  <JSONTree value={data} />
+</div>
+
 <style lang="scss" global>
   .code-explorer {
     padding: 0.5em;
@@ -15,17 +22,13 @@
     label {
       margin-bottom: 0;
     }
-    .spaced{
+    .spaced {
       letter-spacing: normal;
       margin-left: 0.5em;
     }
-    div.container{
+    div.container {
       padding: 0;
       padding-right: 100%;
     }
   }
 </style>
-
-<div class="code-explorer" style="--json-tree-font-size: 1rem; --json-tree-font-family: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;">
-  <JSONTree value={data} />
-</div>
