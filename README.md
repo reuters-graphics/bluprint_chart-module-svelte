@@ -14,7 +14,7 @@ This bluprint may be for you if you're...
   
 - If you have a chart you or others are likely to use again and again, this template includes a strong pattern for reusability. It's built to publish an npm-installable version of your chart users can easily pull into any project. It also comes with strong conventions for handling customizing your chart, automatically documents how to use your chart and is battle-tested with modern JS frameworks.
 
-**... working on a chart apart from the project it will be used in.** 
+**... working on a chart apart from the project it will be used in.**
 
 - If you're working with others or want to develop your chart in parallel to a larger project, this bluprint is a great way to sandbox your dataviz work. Once your chart is ready, you'll install it into your project, and as your chart develops, your colleagues can simply upgrade it through npm to get your latest code. For large projects, this is an especially good way to isolate your work and split a project between developers working with different technologies.
 
@@ -32,37 +32,36 @@ In that case, though, you can still use the great D3 boilerplate included in thi
 
 1. If you haven't already, add this bluprint to your CLI.
 
-  ```
-  $ bluprint add https://github.com/reuters-graphics/bluprint_chart-module-svelte
+  ```bash
+  bluprint add https://github.com/reuters-graphics/bluprint_chart-module-svelte
   ```
 
 2. Make a new directory and use the bluprint.
 
+  ```bash
+  mkdir my-project && cd my-project
+  bluprint start
   ```
-  $ mkdir my-project && cd my-project
-  $ bluprint start
-  ```
+
 3. Once your bluprint is finished, be sure to create a repository in GitHub according to the slug you provided for your chart and add it to your repo.
 
+  ```bash
+  git remote add origin https://github.com/reuters.graphics/chart-module-my-dataviz.git
   ```
-  $ git remote add origin https://github.com/reuters.graphics/chart-module-my-dataviz.git
-  ```
-
 
 4. Start the development server to begin working on your chart module.
 
-  ```
-  $ runner start
+  ```bash
+  yarn start
   ```
 
 5. When you're finished, build out your chart module as a library.
 
-  ```
-  $ runner build
+  ```bash
+  yarn build
   ```
 
 6. The build process will bundle your chart module for others to install from GitHub. It will also create a GitHub docs page to preview your chart, which you can publish by updating the GitHub Pages settings on your repo in GitHub (use the `docs/` folder on the `master` branch). Don't forget to push to GitHub!
-
 
 ## Developing chart modules
 

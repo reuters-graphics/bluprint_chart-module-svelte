@@ -6,8 +6,8 @@ See the [demo page](https://reuters-graphics.github.io/chart-module-my-chart-mod
 
 ### Install
 
-```
-$ yarn add https://github.com/reuters-graphics/chart-module-my-chart-module.git
+```bash
+yarn add https://github.com/reuters-graphics/chart-module-my-chart-module.git
 ```
 
 ### Use
