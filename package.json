@@ -2,12 +2,10 @@
   "name": "@reuters-graphics/chart-module-my-chart-module",
   "version": "0.0.1",
   "type": "module",
+  "module": "./dist/index.js",
+  "main": "./dist.index.js",
   "exports": {
-    "./package.json": "./package.json",
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    }
+    "default": "./dist/index.js"
   },
   "license": "MIT",
   "private": false,
