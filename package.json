@@ -72,6 +72,7 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "sass": "^1.29.0",
     "snowpack": "^3.0.11",
+    "snowpack-plugin-dsv": "^1.0.0",
     "stringify-object": "^3.3.0",
     "svelte": "^3.17.3",
     "svelte-highlight": "^0.6.2",
