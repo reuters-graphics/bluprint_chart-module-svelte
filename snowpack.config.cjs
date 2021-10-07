@@ -1,4 +1,5 @@
 const sveltePreprocess = require('svelte-preprocess');
+const dsv = require('snowpack-plugin-dsv');
 
 const preprocess = sveltePreprocess({
   scss: {
@@ -21,6 +22,7 @@ module.exports = {
   plugins: [
     ['@snowpack/plugin-svelte', { preprocess }],
     ['./snowpack.plugin.sass.cjs'],
+    ['snowpack-plugin-dsv']
   ],
   alias: {
     '~@reuters-graphics': '@reuters-graphics',
