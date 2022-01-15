@@ -1,0 +1,52 @@
+@import '~@reuters-graphics/style-main/scss/fonts/mixins';
+
+a,
+.github-link {
+  color: #0969da;
+  background: none;
+  &:hover {
+    color: #0969da;
+    text-decoration: underline;
+  }
+}
+
+p,
+ul,
+ol {
+  a {
+    @extend .github-link;
+  }
+}
+
+section,
+section.body-text {
+  h1 {
+    // Override of eisbaer style...
+    display: block;
+  }
+  p,
+  ul,
+  ol {
+    @include font-sans;
+    font-weight: 200;
+    font-size: 1.2rem;
+    a {
+      @extend .github-link;
+    }
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  a {
+    color: inherit;
+    &:hover {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+}

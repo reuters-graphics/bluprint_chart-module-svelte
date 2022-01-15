@@ -1,0 +1,9 @@
+@import 'github-flavor';
+@import 'text';
+@import 'code';
+@import 'media';
+@import 'table';
+
+section.markdown-body{
+  margin: 4rem auto 6rem;
+}

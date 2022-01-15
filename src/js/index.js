@@ -53,8 +53,8 @@ class MyChartModule {
     margin: {
       top: 20,
       right: 20,
-      bottom: 25,
-      left: 30,
+      bottom: 30,
+      left: 35,
     },
     fill: 'grey',
   };
@@ -74,7 +74,9 @@ class MyChartModule {
 
     const width = containerWidth - margin.left - margin.right;
     const height =
-      containerWidth * props.aspectHeight - margin.top - margin.bottom;
+      Math.min(containerWidth * props.aspectHeight, 450) -
+      margin.top -
+      margin.bottom;
 
     const xScale = d3.scaleLinear().domain([0, 100]).range([0, width]);
 
@@ -115,7 +117,8 @@ class MyChartModule {
             .append('circle')
             .attr('cy', (d) => yScale(d.y))
             .attr('cx', (d) => xScale(d.x))
-            .attr('r', (d) => rScale(d.r)),
+            .attr('r', (d) => rScale(d.r))
+            .style('stroke', 'white'),
         (update) =>
           update.call((update) =>
             update
