@@ -32,14 +32,15 @@ The files you'll use to build your chart module are all in the `src/` directory:
 ```
 - src/
   - demo/
-    - Chart.svelte 👈
   - js/
+    - Demo.svelte 👈
+    - docs.svx 👈
     - index.js 👈
   - scss/
     - _chart.scss 👈
 ```
 
-Build your chart in the `src/js/index.js` file, write styles in `src/scss/_chart.scss` and customize the demo page in `src/demo/Chart.svelte`.
+Build your chart in the `src/js/index.js` file, write styles in `src/scss/_chart.scss`, customize the demo page in `src/js/Demo.svelte` and write any custom docs telling folks how to use your chart in `src/js/docs.svx`.
 
 When you're finished, build your chart.
 
@@ -690,7 +691,7 @@ The demo page for your chart is a place for users to see what your chart looks l
 
 > The demo page is written in [Svelte](https://svelte.dev/). You can learn all about Svelte from [their own docs](https://svelte.dev/tutorial/basics), but the demo page is designed for you to get by without knowing too much about it. This section is here to help. Read on.
 
-You'll write the demo of your chart in `src/demo/Chart.svelte`. You can follow the notes in that component, but we'll go over some basic points here.
+You'll write the demo of your chart in `src/js/Demo.svelte`. You can follow the notes in that component, but we'll go over some basic points here.
 
 At its most basic, your chart demo can be written like this:
 
