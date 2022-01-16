@@ -1,44 +1,31 @@
 <script>
   import { faDesktop, faMobileAlt } from '@fortawesome/free-solid-svg-icons';
   import Icon from 'fa-svelte';
-
-  export let width = '';
-  export let setWidth = (w) => {
-    width = w;
-  };
+  import { chartWidth } from './stores';
 </script>
 
-<section class={`graphic borderless ${width}`}>
-  <slot />
-</section>
 <div class="size-options">
   <div>
-    <Icon icon={faDesktop} />
+    <Icon icon="{faDesktop}" />
     <button
-      class={width === 'fluid' ? 'active' : ''}
-      on:click={() => setWidth('fluid')}
-    />
+      class="{$chartWidth === 'fluid' ? 'active' : ''}"
+      on:click="{() => chartWidth.set('fluid')}"></button>
     <button
-      class={width === 'widest' ? 'active' : ''}
-      on:click={() => setWidth('widest')}
-    />
+      class="{$chartWidth === 'widest' ? 'active' : ''}"
+      on:click="{() => chartWidth.set('widest')}"></button>
     <button
-      class={width === 'wider' ? 'active' : ''}
-      on:click={() => setWidth('wider')}
-    />
+      class="{$chartWidth === 'wider' ? 'active' : ''}"
+      on:click="{() => chartWidth.set('wider')}"></button>
     <button
-      class={width === 'wide' ? 'active' : ''}
-      on:click={() => setWidth('wide')}
-    />
+      class="{$chartWidth === 'wide' ? 'active' : ''}"
+      on:click="{() => chartWidth.set('wide')}"></button>
     <button
-      class={width === '' ? 'active' : ''}
-      on:click={() => setWidth('')}
-    />
+      class="{$chartWidth === '' ? 'active' : ''}"
+      on:click="{() => chartWidth.set('')}"></button>
     <button
-      class={width === 'mobile' ? 'active' : ''}
-      on:click={() => setWidth('mobile')}
-    />
-    <Icon icon={faMobileAlt} />
+      class="{$chartWidth === 'mobile' ? 'active' : ''}"
+      on:click="{() => chartWidth.set('mobile')}"></button>
+    <Icon icon="{faMobileAlt}" />
   </div>
 </div>
 
@@ -52,11 +39,13 @@
     text-align: center;
     font-size: 18px;
     color: #ccc;
+    background-color: rgba(255, 255, 255, 0.2);
 
     & > div {
       width: 205px;
       margin: 0 auto;
       display: flex;
+      
     }
 
     button {
@@ -67,7 +56,7 @@
       width: 20px;
       outline: none;
       &.active {
-        background-color: #ccc;
+        background-color: #bbb;
       }
       &:first-of-type {
         margin-left: 10px;

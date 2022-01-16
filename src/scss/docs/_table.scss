@@ -1,0 +1,5 @@
+@import '~@reuters-graphics/style-main/scss/fonts/mixins';
+
+table {
+  @include font-sans;
+}

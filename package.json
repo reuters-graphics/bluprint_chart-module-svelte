@@ -2,10 +2,8 @@
   "name": "@reuters-graphics/chart-module-my-chart-module",
   "version": "0.0.1",
   "type": "module",
-  "module": "./dist/index.js",
-  "main": "./dist.index.js",
   "exports": {
-    "default": "./dist/index.js"
+    ".": "./dist/index.js"
   },
   "license": "MIT",
   "private": false,
@@ -16,20 +14,20 @@
     "src/js/**/*",
     "src/scss/**/*",
     "!src/scss/demo.scss",
-    "badge.svg"
+    "!src/scss/docs/**/*"
   ],
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,svelte}": "prettier --write"
+  },
   "engines": {
-    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
+    "node": ">= 14.17.0"
   },
   "scripts": {
-    "start": "snowpack dev",
-    "build:docs": "snowpack build",
-    "build:lib": "rollup -c rollup.config.lib.js",
-    "lint:js": "prettier --write 'src/js/**/*.js'",
-    "lint:scss": "prettier --write 'src/scss/**/*.scss'",
-    "lint:svelte": "prettier --write 'src/demo/**/*.svelte'",
-    "lint": "yarn lint:js && yarn lint:scss && yarn lint:svelte",
-    "build": "yarn lint && yarn build:lib && yarn build:docs"
+    "start": "vite --open",
+    "build": "yarn build:lib && yarn build:docs",
+    "build:lib": "vite build",
+    "build:docs": "export DOCS=1 && vite build"
   },
   "dependencies": {
     "d3": "^7.0.0",
@@ -42,41 +40,36 @@
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
-    "@babel/plugin-transform-runtime": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "@babel/runtime": "^7.0.0",
+    "@babel/core": "^7.15.5",
+    "@babel/eslint-parser": "^7.15.4",
+    "@babel/eslint-plugin": "^7.14.5",
+    "@babel/preset-env": "^7.15.6",
     "@fortawesome/free-brands-svg-icons": "^5.15.1",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@reuters-graphics/eslint-config": "^0.0.2",
     "@reuters-graphics/style-color": "^1.0.0",
-    "@reuters-graphics/style-theme-eisbaer": "^0.2.3",
-    "@rollup/plugin-babel": "^5.0.0",
-    "@rollup/plugin-commonjs": "^14.0.0",
-    "@rollup/plugin-node-resolve": "^8.0.0",
-    "@rollup/plugin-replace": "^2.2.0",
-    "@rollup/plugin-url": "^5.0.0",
-    "@snowpack/plugin-svelte": "^3.5.2",
-    "autoprefixer": "^10.0.2",
-    "eslint": "^7.13.0",
-    "eslint-plugin-svelte3": "^2.7.3",
+    "@reuters-graphics/style-theme-eisbaer": "^0.3.6",
+    "@rollup/plugin-dsv": "^2.0.1",
+    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.34",
+    "autoprefixer": "^10.2.5",
+    "eslint": "^8.6.0",
+    "eslint-plugin-svelte3": "^3.2.1",
     "fa-svelte": "^3.1.0",
+    "fs-extra": "^10.0.0",
+    "husky": ">=6",
+    "lint-staged": ">=10",
+    "mdsvex": "^0.9.8",
     "postcss": "^8.1.7",
-    "prettier": "^2.2.1",
-    "prettier-plugin-svelte": "^2.1.4",
-    "rollup": "^2.3.4",
-    "rollup-plugin-alias": "^2.2.0",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-json": "^4.0.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "sass": "^1.29.0",
-    "snowpack": "^3.0.11",
-    "snowpack-plugin-dsv": "^1.0.0",
+    "prettier": "^2.3.2",
+    "prettier-plugin-svelte": "^2.4.0",
+    "prism-themes": "^1.9.0",
+    "prismjs": "^1.26.0",
+    "sass": "^1.45.0",
     "stringify-object": "^3.3.0",
-    "svelte": "^3.17.3",
-    "svelte-highlight": "^0.6.2",
+    "svelte": "^3.46.2",
     "svelte-json-tree": "^0.1.0",
-    "svelte-preprocess": "4.5.2"
+    "svelte-preprocess": "4.5.2",
+    "svelte-prism": "^1.1.3",
+    "vite": "^2.7.12"
   }
 }

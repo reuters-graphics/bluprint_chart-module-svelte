@@ -1,0 +1,36 @@
+pre[class*='language-'] {
+  margin: 1.5rem auto 2.5rem;
+}
+
+iframe {
+  margin: 4rem auto;
+  display: block;
+}
+
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+  border-radius: 4px;
+}
+
+// Inline code
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+table {
+  code {
+    margin: 0 3px;
+    background-color: #efefef;
+    padding: 0.2em 0.4em;
+    margin: 0;
+    font-size: 80%;
+    border-radius: 6px;
+    color: #666;
+    font-weight: 200;
+  }
+}

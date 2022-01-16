@@ -1,0 +1,191 @@
+// GitHub markdown, lightly modified for us...
+// from: https://github.com/sindresorhus/github-markdown-css/blob/main/github-markdown-light.css
+.markdown-body {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  h1 {
+    margin: 0.67em 0;
+    font-weight: 600;
+    padding-bottom: 0.3em;
+    font-size: 2em;
+    border-bottom: 1px solid hsla(210, 18%, 87%, 1);
+  }
+
+  h2 {
+    font-weight: 600;
+    padding-bottom: 0.3em;
+    font-size: 1.5em;
+    border-bottom: 1px solid hsla(210, 18%, 87%, 1);
+  }
+
+  h3 {
+    font-weight: 600;
+    font-size: 1.25em;
+  }
+
+  h4 {
+    font-weight: 600;
+    font-size: 1em;
+  }
+
+  h5 {
+    font-weight: 600;
+    font-size: 0.875em;
+  }
+
+  h6 {
+    font-weight: 600;
+    font-size: 0.85em;
+    color: #57606a;
+  }
+
+  small {
+    font-size: 90%;
+  }
+
+  sub {
+    bottom: -0.25em;
+  }
+
+  sup {
+    top: -0.5em;
+  }
+
+  hr {
+    box-sizing: content-box;
+    overflow: hidden;
+    background: transparent;
+    border-bottom: 1px solid hsla(210, 18%, 87%, 1);
+    height: 0.05em;
+    padding: 0;
+    margin: 2rem 0;
+    background-color: #d0d7de;
+    border: 0;
+  }
+
+  hr::before {
+    display: table;
+    content: '';
+  }
+
+  hr::after {
+    display: table;
+    clear: both;
+    content: '';
+  }
+
+  img {
+    border-style: none;
+    max-width: 100%;
+    box-sizing: content-box;
+    background-color: #ffffff;
+  }
+
+  table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    display: block;
+    width: max-content;
+    max-width: 100%;
+    overflow: auto;
+  }
+
+  td,
+  th {
+    padding: 0;
+  }
+
+  table th {
+    font-weight: 600;
+  }
+
+  table th,
+  table td {
+    padding: 6px 13px;
+    border: 1px solid #d0d7de;
+  }
+
+  table tr {
+    background-color: #ffffff;
+    border-top: 1px solid hsla(210, 18%, 87%, 1);
+  }
+
+  table tr:nth-child(2n) {
+    background-color: #f6f8fa;
+  }
+
+  table img {
+    background-color: transparent;
+  }
+
+  blockquote {
+    margin: 0;
+    padding: 0 1em;
+    color: #57606a;
+    border-left: 0.25em solid #d0d7de;
+  }
+
+  ul,
+  ol {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 2em;
+  }
+
+  ol ol,
+  ul ol {
+    list-style-type: lower-roman;
+  }
+
+  ul ul ol,
+  ul ol ol,
+  ol ul ol,
+  ol ol ol {
+    list-style-type: lower-alpha;
+  }
+
+  article > *:first-child {
+    margin-top: 0 !important;
+  }
+
+  article > *:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  // Lightly modified by Reuters Graphics
+  @media (min-width: 1275px) {
+    h1:hover a.heading-link:before,
+    h2:hover a.heading-link:before,
+    h3:hover a.heading-link:before,
+    h4:hover a.heading-link:before,
+    h5:hover a.heading-link:before,
+    h6:hover a.heading-link:before {
+      width: 16px;
+      height: 16px;
+      margin-right: 2px;
+      content: ' ';
+      display: inline-block;
+      background-color: currentColor;
+      -webkit-mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");
+      mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");
+    }
+    h1:hover a.heading-link,
+    h2:hover a.heading-link,
+    h3:hover a.heading-link,
+    h4:hover a.heading-link,
+    h5:hover a.heading-link,
+    h6:hover a.heading-link {
+      margin-left: -18px;
+    }
+  }
+}

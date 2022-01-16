@@ -29,15 +29,14 @@
       "action": "regexreplace",
       "files": [
         "public/index.html",
-        "src/demo/App/Docs.svelte",
-        "src/demo/Chart.svelte",
+        "src/demo/Docs.svelte",
+        "src/js/Demo.svelte",
         "src/js/index.js",
         "src/scss/_chart.scss",
         "src/scss/demo.scss",
-        ".tasksrc.js",
         "package.json",
         "README.md",
-        "snowpack.config.js"
+        "vite.config.js"
       ],
       "replace": [
         ["MyChartModule", "{{ chartClass }}"],
@@ -52,7 +51,9 @@
       "action": "execute",
       "cmds": [
         ["yarn"],
-        ["git", ["init"]]
+        ["git", ["init"]],
+        ["chmod", ["ug+x", ".husky/pre-commit"]],
+        ["yarn", ["husky", "install"]]
       ],
       "silent": true
     },
