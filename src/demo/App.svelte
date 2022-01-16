@@ -14,7 +14,7 @@
     <Chart />
   </div>
   <Docs />
-  <!-- <Explorer /> -->
+  <Explorer />
   <section class='markdown-body wide'>
     <CustomDocs />
   </section>

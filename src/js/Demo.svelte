@@ -31,8 +31,8 @@ Follow the notes below! -->
   
     // ⚙️ Auto-generated interactive documentation for you chart data and props!
     Explorer.set({
-      Data: chart.data(),
-      Props: chart.props(),
+      '⚙️ Data': chart.data(),
+      '⚙️ Props': chart.props(),
     });
   });
 </script>

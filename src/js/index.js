@@ -50,6 +50,7 @@ class MyChartModule {
    */
   defaultProps = {
     aspectHeight: 0.7,
+    maxHeight: 450,
     margin: {
       top: 20,
       right: 20,
@@ -73,10 +74,7 @@ class MyChartModule {
     const { width: containerWidth } = container.getBoundingClientRect(); // Respect the width of your container!
 
     const width = containerWidth - margin.left - margin.right;
-    const height =
-      Math.min(containerWidth * props.aspectHeight, 450) -
-      margin.top -
-      margin.bottom;
+    const height = Math.min(containerWidth * props.aspectHeight, props.maxHeight) - margin.top - margin.bottom;
 
     const xScale = d3.scaleLinear().domain([0, 100]).range([0, width]);
 

@@ -2422,11 +2422,6 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
-highlight.js@11.4.0:
-  version "11.4.0"
-  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-11.4.0.tgz#34ceadd49e1596ee5aba3d99346cdfd4845ee05a"
-  integrity sha512-nawlpCBCSASs7EdvZOYOYVkJpGmAOKMYZgZtUqSRqodZE0GRVcFKwo1RcpeOemqh9hyttTdd5wDBwHkuSyUfnA==
-
 human-signals@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-2.1.0.tgz#dc91fcba42e4d06e4abaed33b3e7a3c02f514ea0"
@@ -3485,13 +3480,6 @@ supports-preserve-symlinks-flag@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
-
-svelte-highlight@^5.2.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/svelte-highlight/-/svelte-highlight-5.2.0.tgz#1362a979b52ac8b73218852f0c314ea36ec0a0f7"
-  integrity sha512-Gq0WFJdq7jDgj3BFmlfdZtE35O1XE1qDh2mIxkoMq0NQOn0WXcs24ZhioD/QHWpFOtT2KJOeCiMqjxJ0Am1m2Q==
-  dependencies:
-    highlight.js "11.4.0"
 
 svelte-hmr@^0.14.9:
   version "0.14.9"

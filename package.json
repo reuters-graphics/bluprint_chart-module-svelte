@@ -13,7 +13,8 @@
     "dist/**/*",
     "src/js/**/*",
     "src/scss/**/*",
-    "!src/scss/demo.scss"
+    "!src/scss/demo.scss",
+    "!src/scss/docs/**/*"
   ],
   "lint-staged": {
     "*.js": "eslint --cache --fix",
@@ -66,7 +67,6 @@
     "sass": "^1.45.0",
     "stringify-object": "^3.3.0",
     "svelte": "^3.46.2",
-    "svelte-highlight": "^5.2.0",
     "svelte-json-tree": "^0.1.0",
     "svelte-preprocess": "4.5.2",
     "svelte-prism": "^1.1.3",
