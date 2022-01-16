@@ -18,7 +18,9 @@ const scss = {
   importer: [
     (url) => {
       // Redirect tilde-prefixed imports to node_modules
-      if (/^~/.test(url)) { return { file: `node_modules/${url.replace('~', '')}` }; }
+      if (/^~/.test(url)) {
+        return { file: `node_modules/${url.replace('~', '')}` };
+      }
       return null;
     },
   ],
@@ -28,18 +30,15 @@ const scss = {
 // https://vitejs.dev/config/
 export default defineConfig({
   base: PROD ? PKG.homepage : '/',
-  optimizeDeps: {
-    include: ['highlight.js/lib/core'],
-  },
   build: {
     outDir: DOCS ? 'docs' : 'dist/',
-    lib: DOCS ?
-      null :
-      {
-        entry: path.resolve(dirname, 'src/js/index.js'),
-        formats: ['es'],
-        fileName: () => 'index.js',
-      },
+    lib: DOCS
+      ? null
+      : {
+          entry: path.resolve(dirname, 'src/js/index.js'),
+          formats: ['es'],
+          fileName: () => 'index.js',
+        },
     rollupOptions: {
       external: Object.keys(PKG.dependencies),
     },
@@ -50,10 +49,7 @@ export default defineConfig({
   plugins: [
     dsv(),
     svelte({
-      extensions: [
-        '.svelte',
-        '.svx'
-      ],
+      extensions: ['.svelte', '.svx'],
       preprocess: [
         sveltePreprocess({
           preserve: ['ld+json'],
