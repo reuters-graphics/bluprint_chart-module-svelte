@@ -17,26 +17,27 @@
   }
   div.code-explorer {
     padding: 0.5em;
-    background: #2E3440;
-    border: 1px solid #ccc;
+    background: #2e3440;
+    border-radius: 0.3em;
     color: white;
 
-    --json-tree-string-color: #A3BE8C;
-    --json-tree-symbol-color: #BF616A;
-    --json-tree-boolean-color: #8FBCBB;
-    --json-tree-function-color: #D08770;
-    --json-tree-number-color: #B48EAD;
-    --json-tree-label-color: #88C0D0;
-    --json-tree-arrow-color: #E5E9F0;
-    --json-tree-null-color: #81A1C1;
-    --json-tree-undefined-color: #E5E9F0;
-    --json-tree-date-color: #EBCB8B;
+    --json-tree-string-color: #a3be8c;
+    --json-tree-symbol-color: #bf616a;
+    --json-tree-boolean-color: #8fbcbb;
+    --json-tree-function-color: #d08770;
+    --json-tree-number-color: #b48ead;
+    --json-tree-label-color: #88c0d0;
+    --json-tree-arrow-color: #e5e9f0;
+    --json-tree-null-color: #81a1c1;
+    --json-tree-undefined-color: #e5e9f0;
+    --json-tree-date-color: #ebcb8b;
     /* position */
     --json-tree-li-indentation: 1.25rem;
     --json-tree-li-line-height: 1.3;
     /* font */
     --json-tree-font-size: 1.2rem;
-    --json-tree-font-family: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    --json-tree-font-family: Menlo, Monaco, Consolas, 'Liberation Mono',
+      'Courier New', monospace;
 
     ul,
     ol {
