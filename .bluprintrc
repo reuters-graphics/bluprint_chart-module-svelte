@@ -29,8 +29,8 @@
       "action": "regexreplace",
       "files": [
         "public/index.html",
-        "src/demo/App/Docs.svelte",
-        "src/demo/Chart.svelte",
+        "src/demo/Docs.svelte",
+        "src/js/Demo.svelte",
         "src/js/index.js",
         "src/scss/_chart.scss",
         "src/scss/demo.scss",
