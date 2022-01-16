@@ -10,16 +10,26 @@
 <Nav />
 <Resizer />
 <article class="container-fluid">
-  <Chart />
+  <div class='chart-well fluid'>
+    <Chart />
+  </div>
   <Docs />
-  <Explorer />
+  <!-- <Explorer /> -->
   <section class='markdown-body wide'>
     <CustomDocs />
   </section>
 </article>
 
-<style>
+<style lang="scss">
   article {
     padding-bottom: 80px;
+    div.chart-well {
+      width: 100%;
+      padding: 20px 0;
+      background-color: #eee;
+      width: 100vw;
+      margin-left: -15px;
+      box-shadow: inset 0px 0px 8px 0px #ccc;
+    }
   }
 </style>

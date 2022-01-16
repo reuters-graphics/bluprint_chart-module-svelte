@@ -3083,7 +3083,7 @@ prettier@^2.3.2:
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.5.1.tgz#fff75fa9d519c54cf0fce328c1017d94546bc56a"
   integrity sha512-vBZcPRUR5MZJwoyi3ZoyQlc1rXeEck8KgeC9AwwOn+exuxLxq5toTRDTSaVrXHxelDMHy9zlicw8u66yxoSUFg==
 
-prism-svelte@^0.4.7:
+prism-svelte@^0.4.0, prism-svelte@^0.4.7:
   version "0.4.7"
   resolved "https://registry.yarnpkg.com/prism-svelte/-/prism-svelte-0.4.7.tgz#fbc6709450b4e2ed660ddb82c3718817fc584cbe"
   integrity sha512-yABh19CYbM24V7aS7TuPYRNMqthxwbvx6FF/Rw920YbyBWO3tnyPIqRMgHuSVsLmuHkkBS1Akyof463FVdkeDQ==
@@ -3093,7 +3093,7 @@ prism-themes@^1.9.0:
   resolved "https://registry.yarnpkg.com/prism-themes/-/prism-themes-1.9.0.tgz#19c034f3205f1e28d75d89728e54ccd745f7e3dd"
   integrity sha512-tX2AYsehKDw1EORwBps+WhBFKc2kxfoFpQAjxBndbZKr4fRmMkv47XN0BghC/K1qwodB1otbe4oF23vUTFDokw==
 
-prismjs@^1.17.1:
+prismjs@^1.17.1, prismjs@^1.26.0:
   version "1.26.0"
   resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.26.0.tgz#16881b594828bb6b45296083a8cbab46b0accd47"
   integrity sha512-HUoH9C5Z3jKkl3UunCyiD5jwk0+Hz0fIgQ2nbwU2Oo/ceuTAQAg+pPVnfdt2TJWRVLcxKh9iuoYDUSc8clb5UQ==
@@ -3512,6 +3512,14 @@ svelte-preprocess@4.5.2:
     "@types/sass" "^1.16.0"
     detect-indent "^6.0.0"
     strip-indent "^3.0.0"
+
+svelte-prism@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/svelte-prism/-/svelte-prism-1.1.3.tgz#7a2c0d268d9eab2678f60b60c0a13187f4cda25f"
+  integrity sha512-VlaafD4avfftZU4NKmCP44slFdAE7KvQ2cNTIqtA0G1nCMfA6zKtZiTdAzlEnYSAKzxQTOzfOqRS0BgVCGaOoA==
+  dependencies:
+    prism-svelte "^0.4.0"
+    prismjs "^1.17.1"
 
 svelte@^3.46.2:
   version "3.46.2"

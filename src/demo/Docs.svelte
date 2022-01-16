@@ -1,9 +1,12 @@
 <script>
-  import { Highlight } from 'svelte-highlight';
-  import { javascript, bash, scss } from 'svelte-highlight/src/languages';
-  import { github } from 'svelte-highlight/src/styles';
+  // import { Highlight } from 'svelte-highlight';
+  // import { javascript, bash, scss } from 'svelte-highlight/src/languages';
+  // import { github } from 'svelte-highlight/src/styles';
   import { faGithub } from '@fortawesome/free-brands-svg-icons';
   import Icon from 'fa-svelte';
+  import Prism from 'prismjs';
+  import 'prismjs/components/prism-bash';
+  import 'prismjs/components/prism-scss';
 
   /**
    * ✏️ DOCUMENTATION STRINGS BELOW
@@ -11,7 +14,7 @@
 
   // Installation docs
   const installDocs =
-    '$ yarn add https://github.com/reuters-graphics/chart-module-my-chart-module.git';
+    'yarn add https://github.com/reuters-graphics/chart-module-my-chart-module.git';
 
   // JavaScript docs
   $: jsDocs = `// JS
@@ -30,18 +33,40 @@ chart
 $MyChartModule-container: '.my-chart-module-container';
 
 @import '@reuters-graphics/chart-module-my-chart-module/src/scss/chart';`;
+
+$: console.log(Prism);
 </script>
 
-<svelte:head>
+<!-- <svelte:head>
   {@html github}
-</svelte:head>
+</svelte:head> -->
 
 <section class="body-text wide">
   <div class="chart-docs">
     <h5>Quickstart</h5>
-    <Highlight language="{bash}" code="{installDocs}" />
-    <Highlight language="{scss}" code="{styleDocs}" />
-    <Highlight language="{javascript}" code="{jsDocs}" />
+    <pre class="language-bash">
+      <code class="language-bash">
+        {@html Prism.highlight(installDocs, Prism.languages.bash, 'bash')}
+      </code>
+    </pre>
+
+    <pre class="language-scss">
+      <code class="language-scss">
+        {@html Prism.highlight(styleDocs, Prism.languages.scss, 'scss')}
+      </code>
+    </pre>
+
+    <pre class="language-javascript">
+      <code class="language-javascript">
+        {@html Prism.highlight(jsDocs, Prism.languages.javascript, 'javascript')}
+      </code>
+    </pre>
+    
+    
+    
+    <!-- <Prism language="bash" source="{installDocs}" />
+    <Prism language="scss" source="{styleDocs}" />
+    <Prism language="javascript" source="{jsDocs}" /> -->
   </div>
 </section>
 

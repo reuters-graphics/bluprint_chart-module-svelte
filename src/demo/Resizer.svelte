@@ -39,12 +39,13 @@
     text-align: center;
     font-size: 18px;
     color: #ccc;
+    background-color: rgba(255, 255, 255, 0.2);
 
     & > div {
       width: 205px;
       margin: 0 auto;
       display: flex;
-      background-color: rgba(255, 255, 255, 0.2);
+      
     }
 
     button {
@@ -55,7 +56,7 @@
       width: 20px;
       outline: none;
       &.active {
-        background-color: #ccc;
+        background-color: #bbb;
       }
       &:first-of-type {
         margin-left: 10px;
