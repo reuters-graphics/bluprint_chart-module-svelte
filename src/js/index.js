@@ -31,7 +31,7 @@ class MyChartModule {
 
   /**
    * Default data for your chart. Generally, it's NOT a good idea to import
-   * a big dataset and assign it here b/c it'll make your component quite
+   * a big dataset and assign it here b/c it'll make your module quite
    * large in terms of file size. At minimum, though, you should assign an
    * empty Array or Object, depending on what your chart expects.
    */
@@ -74,7 +74,10 @@ class MyChartModule {
     const { width: containerWidth } = container.getBoundingClientRect(); // Respect the width of your container!
 
     const width = containerWidth - margin.left - margin.right;
-    const height = Math.min(containerWidth * props.aspectHeight, props.maxHeight) - margin.top - margin.bottom;
+    const height =
+      Math.min(containerWidth * props.aspectHeight, props.maxHeight) -
+      margin.top -
+      margin.bottom;
 
     const xScale = d3.scaleLinear().domain([0, 100]).range([0, width]);
 
