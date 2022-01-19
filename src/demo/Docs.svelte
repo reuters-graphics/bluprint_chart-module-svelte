@@ -27,7 +27,9 @@ chart
   const styleDocs = `// SCSS
 $MyChartModule-container: '.my-chart-module-container';
 
-@import '@reuters-graphics/chart-module-my-chart-module/src/scss/chart';`;
+:global {
+  @import '@reuters-graphics/chart-module-my-chart-module/src/scss/chart';
+}`;
 </script>
 
 <!-- <svelte:head>
@@ -37,9 +39,9 @@ $MyChartModule-container: '.my-chart-module-container';
 <section class="body-text wide">
   <div class="chart-docs">
     <h5>🚀 Quickstart</h5>
-    <CodeBlock source={installDocs} language="bash" />
-    <CodeBlock source={styleDocs} language="scss" />
-    <CodeBlock source={jsDocs} language="javascript" />
+    <CodeBlock source="{installDocs}" language="bash" />
+    <CodeBlock source="{styleDocs}" language="scss" />
+    <CodeBlock source="{jsDocs}" language="javascript" />
   </div>
 </section>
 
