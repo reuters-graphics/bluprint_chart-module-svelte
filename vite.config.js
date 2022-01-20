@@ -40,7 +40,7 @@ export default defineConfig({
           fileName: () => 'index.js',
         },
     rollupOptions: {
-      external: Object.keys(PKG.dependencies),
+      external: DOCS ? [] : Object.keys(PKG.dependencies),
     },
   },
   css: {
